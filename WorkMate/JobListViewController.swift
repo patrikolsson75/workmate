@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import Alamofire
+
+struct Job {
+    let annonsrubrik : String
+}
 
 class JobListViewController: UITableViewController {
 
+    var matchningslista : Matchningslista?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +25,20 @@ class JobListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        Alamofire.request(.GET, "http://api.arbetsformedlingen.se/platsannons/sok?antalrader=100&sida=1&q=s(sn(xcode))")
+            .responseData { response in
+                
+                if let responseData = response.result.value {
+                    if let matchlist = try? Matchningslista(jsonData: responseData) {
+                        self.matchningslista = matchlist
+                        self.tableView.reloadData()
+                    }
+                }
+                
+                
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +49,23 @@ class JobListViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.matchningslista?.matchningdata.count ?? 0
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("simpleCell", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        if let job = self.matchningslista?.matchningdata[indexPath.row] {
+            cell.textLabel?.text = job.annonsrubrik
+        }
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

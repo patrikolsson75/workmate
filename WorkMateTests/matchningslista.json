@@ -1,0 +1,89 @@
+{
+    "matchningslista": {
+        "matchningdata": [
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "C++ developer",
+                          "publiceraddatum": "2015-11-12T14:08:00+01:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 1280,
+                          "arbetsplatsnamn": "RPS Software AB",
+                          "annonsid": "0015-531127",
+                          "yrkesbenamning": "Mjukvaruutvecklare",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=0015-531127",
+                          "kommunnamn": "Malmö",
+                          "relevans": 40
+                          },
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "Skicklig iOS - utvecklare sökes!",
+                          "publiceraddatum": "2015-11-01T00:00:00+01:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 180,
+                          "arbetsplatsnamn": "ITMaskinen.se AB",
+                          "annonsid": "2811640",
+                          "yrkesbenamning": "Systemutvecklare/Programmerare",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=2811640",
+                          "kommunnamn": "Stockholm",
+                          "relevans": 40
+                          },
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "Augmented reality och video goggles – utveckla framtidens teknik",
+                          "publiceraddatum": "2015-10-21T21:32:00+02:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 580,
+                          "arbetsplatsnamn": "Industrikompetens i Östergötland AB",
+                          "annonsid": "6439593",
+                          "yrkesbenamning": "Civilingenjör, systemutveckling",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=6439593",
+                          "kommunnamn": "Linköping",
+                          "relevans": 40
+                          },
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "utvecklare för Android och iOS.",
+                          "publiceraddatum": "2015-10-13T19:31:00+02:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 1480,
+                          "arbetsplatsnamn": "WEBLINK IP PHONE AB",
+                          "annonsid": "2799206",
+                          "yrkesbenamning": "Systemutvecklare/Programmerare",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=2799206",
+                          "kommunnamn": "Göteborg",
+                          "relevans": 40
+                          },
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "Erfaren mobilutvecklare",
+                          "publiceraddatum": "2015-10-09T09:34:00+02:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 1480,
+                          "arbetsplatsnamn": "HIQ GÖTEBORG AB",
+                          "annonsid": "2796831",
+                          "yrkesbenamning": "Systemutvecklare/Programmerare",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=2796831",
+                          "kommunnamn": "Göteborg",
+                          "relevans": 40
+                          },
+                          {
+                          "antalplatser": "1",
+                          "annonsrubrik": "Mobil / apputvecklare",
+                          "publiceraddatum": "2015-10-08T11:00:00+02:00",
+                          "antalPlatserVisa": 1,
+                          "kommunkod": 1480,
+                          "arbetsplatsnamn": "HIQ GÖTEBORG AB",
+                          "annonsid": "2796270",
+                          "yrkesbenamning": "Programmerare, mobilspel",
+                          "annonsurl": "http://www.arbetsformedlingen.se/ledigajobb?id=2796270",
+                          "kommunnamn": "Göteborg",
+                          "relevans": 40
+                          }
+                          ],
+        "antal_platsannonser_narliggande": 0,
+        "antal_platsannonser_exakta": 0,
+        "antal_sidor": 1,
+        "antal_platserTotal": 6,
+        "antal_platsannonser": 6
+    }
+}
