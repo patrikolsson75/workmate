@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DFE3B4D2C43AC086AC330E9 /* Pods_WorkMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */; };
 		5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */; };
+		5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */; };
 		5FA5F59D1C00F97300F2C1C5 /* matchningslista.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */; };
 		5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */; };
 		5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		35F4599D5171B5A6D578005D /* Pods-WorkMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.debug.xcconfig"; sourceTree = "<group>"; };
 		5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matchningslista.json; sourceTree = "<group>"; };
 		5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchningslistaTests.swift; sourceTree = "<group>"; };
 		5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matchningslista.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */,
 				5FAA9E261C01C3E90000C57B /* JobAdViewController.swift */,
 				5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */,
+				5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */,
 			);
 			path = WorkMate;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				TargetAttributes = {
 					5FA995C21C0085C700BBDAD3 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = F7RFDTA3UC;
 					};
 					5FA995D61C0085C800BBDAD3 = {
 						CreatedOnToolsVersion = 7.1;
@@ -386,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FAA9E231C01A0690000C57B /* JobSearchQueryViewController.swift in Sources */,
+				5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */,
 				5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */,
 				5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */,
 				5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */,
@@ -537,10 +542,13 @@
 			baseConfigurationReference = 35F4599D5171B5A6D578005D /* Pods-WorkMate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WorkMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.in2objects.WorkMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -549,10 +557,13 @@
 			baseConfigurationReference = 7210551137A271012CEEEF90 /* Pods-WorkMate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WorkMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.in2objects.WorkMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

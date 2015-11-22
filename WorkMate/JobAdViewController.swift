@@ -51,7 +51,7 @@ class JobAdViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,11 +61,18 @@ class JobAdViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
-
-        cell.textContentLabel.text = self.platsannons?.annonstext
-
-        return cell
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adHeaderCell", forIndexPath: indexPath) as! AdHeaderTableViewCell
+            cell.titleLabel.text = self.platsannons?.annonsrubrik
+            cell.workNameLabel.text = self.platsannons?.kommunnamn
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
+            cell.textContentLabel.text = self.platsannons?.annonstext
+            return cell
+        }
+        
     }
     
 
