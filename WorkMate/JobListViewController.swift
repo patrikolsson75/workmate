@@ -138,6 +138,25 @@ class JobListViewController: UITableViewController {
                     self.prepareJobSearchQueryViewController(destinationViewController)
                 }
             }
+        } else if segue.identifier == "showJobAd" {
+            if (segue.destinationViewController is JobAdViewController) {
+                let destinationViewController = segue.destinationViewController as! JobAdViewController
+                self.prepareJobAdViewController(destinationViewController, sender: sender)
+            } else if (segue.destinationViewController is UINavigationController) {
+                let nav = segue.destinationViewController as! UINavigationController
+                if (nav.topViewController is JobAdViewController) {
+                    let destinationViewController = nav.topViewController as! JobAdViewController
+                    self.prepareJobAdViewController(destinationViewController, sender: sender)
+                }
+            }
+        }
+    }
+    
+    func prepareJobAdViewController(viewController: JobAdViewController, sender: AnyObject?) {
+        if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
+            if let annons = self.matchningslista?.matchningdata[indexPath.row] {
+                viewController.annonsid = annons.annonsid
+            }
         }
     }
     

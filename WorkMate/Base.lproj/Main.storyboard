@@ -28,13 +28,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="2Ra-iZ-smx" kind="show" identifier="showJobAd" id="Xon-Cd-L73"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -56,6 +59,56 @@
             </objects>
             <point key="canvasLocation" x="1131" y="947"/>
         </scene>
+        <!--Job Ad View Controller-->
+        <scene sceneID="LIU-Ez-8Pj">
+            <objects>
+                <tableViewController id="2Ra-iZ-smx" customClass="JobAdViewController" customModule="WorkMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9qw-RG-OFH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adTextICell" id="Erc-26-kNU" customClass="LabelTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Erc-26-kNU" id="fw5-Pa-DMw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouS-KW-wTA">
+                                            <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="ouS-KW-wTA" firstAttribute="leading" secondItem="fw5-Pa-DMw" secondAttribute="leadingMargin" id="CZK-LA-oW4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ouS-KW-wTA" secondAttribute="trailing" id="kRV-T3-K4v"/>
+                                        <constraint firstItem="ouS-KW-wTA" firstAttribute="top" secondItem="fw5-Pa-DMw" secondAttribute="topMargin" id="vFE-ud-1xl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ouS-KW-wTA" secondAttribute="bottom" id="zMG-LL-UiC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="textContentLabel" destination="ouS-KW-wTA" id="FhL-CQ-uAJ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Ra-iZ-smx" id="cci-Dh-eld"/>
+                            <outlet property="delegate" destination="2Ra-iZ-smx" id="kYz-xU-Rs8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="52b-rc-avQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P42-Th-anc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="947"/>
+        </scene>
         <!--Ändra sökning-->
         <scene sceneID="73S-VN-nbm">
             <objects>
@@ -64,7 +117,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Fritext" footerTitle="Skriv in den text du vill ska finnas i alla jobbannonser" id="rBR-B2-pRR">
                                 <cells>

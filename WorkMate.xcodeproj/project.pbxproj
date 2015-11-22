@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DFE3B4D2C43AC086AC330E9 /* Pods_WorkMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */; };
+		5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */; };
 		5FA5F59D1C00F97300F2C1C5 /* matchningslista.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */; };
 		5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */; };
 		5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */; };
@@ -21,6 +22,10 @@
 		5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E201C0196380000C57B /* JobSearchQuery.swift */; };
 		5FAA9E231C01A0690000C57B /* JobSearchQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */; };
 		5FAA9E251C01BC0F0000C57B /* matchningslista_nohits.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */; };
+		5FAA9E271C01C3E90000C57B /* JobAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E261C01C3E90000C57B /* JobAdViewController.swift */; };
+		5FAA9E2B1C01CBE20000C57B /* PlatsannonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E2A1C01CBE20000C57B /* PlatsannonsTests.swift */; };
+		5FAA9E2D1C01CC5A0000C57B /* Platsannons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E2C1C01CC5A0000C57B /* Platsannons.swift */; };
+		5FAA9E2F1C01CD620000C57B /* platsannons.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FAA9E2E1C01CD620000C57B /* platsannons.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		35F4599D5171B5A6D578005D /* Pods-WorkMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.debug.xcconfig"; sourceTree = "<group>"; };
+		5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matchningslista.json; sourceTree = "<group>"; };
 		5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchningslistaTests.swift; sourceTree = "<group>"; };
 		5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matchningslista.swift; sourceTree = "<group>"; };
@@ -62,6 +68,10 @@
 		5FAA9E201C0196380000C57B /* JobSearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQuery.swift; sourceTree = "<group>"; };
 		5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQueryViewController.swift; sourceTree = "<group>"; };
 		5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matchningslista_nohits.json; sourceTree = "<group>"; };
+		5FAA9E261C01C3E90000C57B /* JobAdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobAdViewController.swift; sourceTree = "<group>"; };
+		5FAA9E2A1C01CBE20000C57B /* PlatsannonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatsannonsTests.swift; sourceTree = "<group>"; };
+		5FAA9E2C1C01CC5A0000C57B /* Platsannons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platsannons.swift; sourceTree = "<group>"; };
+		5FAA9E2E1C01CD620000C57B /* platsannons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = platsannons.json; sourceTree = "<group>"; };
 		6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7210551137A271012CEEEF90 /* Pods-WorkMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +115,7 @@
 			children = (
 				5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */,
 				5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */,
+				5FAA9E2E1C01CD620000C57B /* platsannons.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -114,6 +125,7 @@
 			children = (
 				5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */,
 				5FAA9E201C0196380000C57B /* JobSearchQuery.swift */,
+				5FAA9E2C1C01CC5A0000C57B /* Platsannons.swift */,
 			);
 			name = AFKit;
 			sourceTree = "<group>";
@@ -152,6 +164,8 @@
 				5FA995D21C0085C700BBDAD3 /* Info.plist */,
 				5FA995F41C00861600BBDAD3 /* JobListViewController.swift */,
 				5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */,
+				5FAA9E261C01C3E90000C57B /* JobAdViewController.swift */,
+				5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */,
 			);
 			path = WorkMate;
 			sourceTree = "<group>";
@@ -163,6 +177,7 @@
 				5FA995DD1C0085C800BBDAD3 /* Info.plist */,
 				5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */,
 				5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */,
+				5FAA9E2A1C01CBE20000C57B /* PlatsannonsTests.swift */,
 			);
 			path = WorkMateTests;
 			sourceTree = "<group>";
@@ -304,6 +319,7 @@
 			files = (
 				5FAA9E251C01BC0F0000C57B /* matchningslista_nohits.json in Resources */,
 				5FA5F59D1C00F97300F2C1C5 /* matchningslista.json in Resources */,
+				5FAA9E2F1C01CD620000C57B /* platsannons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +389,10 @@
 				5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */,
 				5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */,
 				5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */,
+				5FAA9E2D1C01CC5A0000C57B /* Platsannons.swift in Sources */,
 				5FA995C71C0085C700BBDAD3 /* AppDelegate.swift in Sources */,
+				5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */,
+				5FAA9E271C01C3E90000C57B /* JobAdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +402,7 @@
 			files = (
 				5FAA9E1F1C0195900000C57B /* JobSearchQueryTests.swift in Sources */,
 				5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */,
+				5FAA9E2B1C01CBE20000C57B /* PlatsannonsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

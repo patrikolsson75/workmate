@@ -1,0 +1,52 @@
+{
+    "platsannons": {
+        "villkor": {
+            "varaktighet": "6 månader eller längre",
+            "arbetstid": "Heltid",
+            "lonetyp": "Fast och rörlig lön",
+            "loneform": "Månadslön",
+            "arbetstidvaraktighet": "Heltid 100%\r\nMöjlighet till förlängning"
+        },
+        "arbetsplats": {
+            "postadress": "Mörbyvägen 1",
+            "logotypurl": "http://api.arbetsformedlingen.se/platsannons/6475275/logotyp",
+            "land": "Sverige",
+            "hemsida": "",
+            "arbetsplatsnamn": "Jobquest Sverige AB",
+            "kontaktpersonlista": {
+                "kontaktpersondata": [
+                                      {
+                                      "namn": "JobQuest",
+                                      "telefonnummer": ""
+                                      }
+                                      ]
+            },
+            "postland": "Sverige",
+            "postnummer": "15535",
+            "besoksadress": "Mörbyvägen 1 15535 Nykvarn",
+            "postort": "Nykvarn"
+        },
+        "ansokan": {
+            "referens": "10405",
+            "sista_ansokningsdag": "2015-12-06T00:00:00+01:00",
+            "ovrigt_om_ansokan": "",
+            "webbplats": "http://www.jobquest.se/lediga-jobb?mtrpage=assignment&mtrt=ams&mtrid=206"
+        },
+        "krav": {
+            "egenbil": false
+        },
+        "annons": {
+            "antalplatserVisa": 1,
+            "annonsrubrik": "Systemutvecklare C# /.Net Södra Stockholm",
+            "publiceraddatum": "2015-11-21T14:03:28.177+01:00",
+            "yrkesid": 2419,
+            "yrkesbenamning": "Systemutvecklare/Programmerare",
+            "annonsid": "6475275",
+            "annonstext": "Är du vår nästa talang i C# / .NET? Har du arbetat som Systemutvecklare i 3-5 år och vill ha roliga och utmanande konsultuppdrag inom Södra Stockholm? \n\nKänner du att du inte uppnår alla kraven? Men känner att det skulle vara utmanande och roligt att vara en del av något nytt? Skicka in din ansökan i alla fall. \n\nVår kund i Södra Stockholm ska bygga upp ett helt nytt utvecklar team! Därav söker vi utvecklare med olika kompetenser. \n\nDu kommer att utveckla både backend och frontend funktionalitet. Som en del av den agila planerings- och designprocessen kommer du att förväntas ge realistiska tids- och leveransuppskattningar och rapportera framsteg i ditt arbete dagligen. Utvecklingsarbetet sker testdrivet enligt TDD, Kanban eller SCRUM. För att passa in i våra kunders team måste du vara flexibel och mycket motiverad. \n\nUppdraget är en del av JobQuest personaluthyrning. Du kommer vara anställd av JobQuest och arbeta som konsult hos vår kund. \n\nUppdragstiden är heltid under perioden 2016-01-04 t.o.m 2016-12-31 med möjlighet till förlängning.\n\nDin Profil:\n\nDu bör ha kunskap inom ett flertal av följande områden: \n\nC# \n?.NET Framework \nASP.NET (MVC) \nWindows Forms \nHTML 5/Javascript/Angular.JS \nWeb services, t ex WCF, REST, SOAP \nTSQL / SQL server? / LINQ \nTFS - Team Foundation Server \nTDD - Test driven utveckling \nAgile/Scrum/Kanban \nSharepoint \nClearcase / GIT / Jira / Perforce \n\nDin personlighet bör motsvara följande: \n\n- Du är kommunikativ och van vid att diskutera kring utmaningar och lösningar med utvecklare, arkitekter, testare och projektledning \n- Du tvekar inte att be om hjälp när du stöter på svåra utmaningar eller otydliga krav \n- Du tycker om att arbeta i ett team, men kan arbeta självständigt \n- Du har erfarenhet av att arbeta i större team \n- Du har erfarenhet av att arbeta agilt (SCRUM) \n- Du har erfarenhet av att arbeta i en global miljö \n- Du bör ha förmåga att arbeta med analys av Incidenter, förvaltningsaktiviteter och utveckla ny funktionalitet \n- Du har gärna erfarenhet av att arbeta i ett nära samarbete med kunden \n- Du är noggrann, men flexibel i sinnet \n- Du förstår vikten av kunskapsöverföring \n- Du är uppmärksam på detaljer, men utan att tappa helhetsbilden\n\nDin ansökan:\n\nAnsök så snart som möjligt, men senast den 6 December via vår CV databas på www.jobquest.se. Då tjänsten ska tillsättas omgående, kommer vi att arbeta löpande med rekryteringsprocessen och tjänsten kan komma att tillsättas innan sista ansökningsdag. \n\nAnsökan ska innehålla namn och nummer till två referenser (Vi ringer inga referenser innan vi har kontaktat dig) \n\nVid frågor gällande den här rekryteringen eller tjänsten, kan du kontakta oss på e-post kontakt@jobquest.se eller på telefon 08 120 23 880 \n\nSom konsult på JobQuest erbjuds du: \n\nKollektivavtal: Samtliga våra tjänster omfattas utav kollektivavtal vilket ger dig avtalsenliga villkor gällande semester, lön, pension, sjukfrånvaro etc. \n\n\nDedikerad konsultchef: Som anställd på JobQuest får du en ansvarig konsultchef som finns tillgänglig under hela din anställningsperiod. Konsultchefens uppgift är att hjälpa dig utvecklas i din yrkesroll samt säkerställa att du trivs på din arbetsplats.\n\nOm Jobquest:\n\nJobQuest är ett snabbt växande bemannings- och rekryteringsföretag med lång och bred branscherfarenhet. Vi vet att bredd skapar möjligheter, både för dig som kund och för dig som kandidat. Vår målsättning är att hitta våra kunders drömkandidat och våra kandidaters drömjobb. Just därför är det så viktigt för oss att vara Personliga, Nyskapande, Professionella och Handlingskraftiga i relation till kund och kandidat. JobQuest följer självklart de gällande kollektivavtalen inom Almega Bemanningsföretagen.",
+            "platsannonsUrl": "http://www.arbetsformedlingen.se/ledigajobb?id=6475275",
+            "antal_platser": "1",
+            "kommunnamn": "Stockholm",
+            "kommunkod": 180
+        }
+    }
+}
