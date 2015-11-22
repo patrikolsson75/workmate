@@ -36,4 +36,12 @@ class JobSearchQueryTests: XCTestCase {
         
         XCTAssertEqual(searchQuery.queryString(), "q=s(sn(xcode))")
     }
+    
+    func testThatItURLEncodeTextQueryString() {
+        let searchQuery = JobSearchQuery()
+        
+        searchQuery.text = "x code"
+        
+        XCTAssertEqual(searchQuery.queryString(), "q=s(sn(x%20code))")
+    }
 }

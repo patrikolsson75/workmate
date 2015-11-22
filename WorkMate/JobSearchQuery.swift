@@ -15,7 +15,9 @@ class JobSearchQuery {
     func queryString() -> String {
         
         if let text = self.text {
-            return "q=s(sn(\(text)))"
+            if let encodedText = NSString(string: text).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+                return "q=s(sn(\(encodedText)))"
+            }
         }
         
         return "q=s()"
