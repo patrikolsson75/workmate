@@ -39,6 +39,19 @@ class MatchningslistaTests: XCTestCase {
         XCTAssertEqual(matchningslista.antal_platsannonser_narliggande, 0)
     }
     
+    func testThatItCanParseNoHitsMatchningslista() {
+        let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("matchningslista_nohits", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonPath!)
+        let matchningslista = try! Matchningslista(jsonData: jsonData!)
+        
+        XCTAssertEqual(matchningslista.antal_platsannonser, 5)
+        XCTAssertEqual(matchningslista.antal_platserTotal, 4)
+        XCTAssertEqual(matchningslista.antal_sidor, 3)
+        XCTAssertEqual(matchningslista.antal_platsannonser_exakta, 2)
+        XCTAssertEqual(matchningslista.antal_platsannonser_narliggande, 1)
+        XCTAssertEqual(matchningslista.matchningdata.count, 0)
+    }
+    
     func testThatItCanParseMatchningdata() {
         let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("matchningslista", ofType: "json")
         let jsonData = NSData(contentsOfFile: jsonPath!)

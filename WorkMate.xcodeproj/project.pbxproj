@@ -20,6 +20,7 @@
 		5FAA9E1F1C0195900000C57B /* JobSearchQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */; };
 		5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E201C0196380000C57B /* JobSearchQuery.swift */; };
 		5FAA9E231C01A0690000C57B /* JobSearchQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */; };
+		5FAA9E251C01BC0F0000C57B /* matchningslista_nohits.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQueryTests.swift; sourceTree = "<group>"; };
 		5FAA9E201C0196380000C57B /* JobSearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQuery.swift; sourceTree = "<group>"; };
 		5FAA9E221C01A0690000C57B /* JobSearchQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQueryViewController.swift; sourceTree = "<group>"; };
+		5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matchningslista_nohits.json; sourceTree = "<group>"; };
 		6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7210551137A271012CEEEF90 /* Pods-WorkMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 		5FA5F59B1C00F94C00F2C1C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5FAA9E241C01BC0F0000C57B /* matchningslista_nohits.json */,
 				5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */,
 			);
 			name = Resources;
@@ -299,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FAA9E251C01BC0F0000C57B /* matchningslista_nohits.json in Resources */,
 				5FA5F59D1C00F97300F2C1C5 /* matchningslista.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

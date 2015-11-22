@@ -76,12 +76,12 @@ class Matchningslista {
             self.antal_platsannonser_exakta = matchningslista["antal_platsannonser_exakta"] as! Int
             self.antal_platsannonser_narliggande = matchningslista["antal_platsannonser_narliggande"] as! Int
             
-            let matchningdatas = matchningslista["matchningdata"] as! NSArray
             var mdata : Array<Matchningdata> = []
-            for matchningDict in matchningdatas {
-                mdata.append(Matchningdata(dictionary: matchningDict as! NSDictionary))
+            if let matchningdatas = matchningslista["matchningdata"] as? NSArray {
+                for matchningDict in matchningdatas {
+                    mdata.append(Matchningdata(dictionary: matchningDict as! NSDictionary))
+                }
             }
-            
             self.matchningdata = mdata
         } catch {
             self.antal_platsannonser = 0
