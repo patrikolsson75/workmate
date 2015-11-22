@@ -30,9 +30,6 @@ class JobListViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: Selector("refreshJobSearch"), forControlEvents: UIControlEvents.ValueChanged)
         
-        let jobSearchQuery = JobSearchQuery()
-        jobSearchQuery.text = "xcode"
-        self.performJobSearch(jobSearchQuery)
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,15 +135,25 @@ class JobListViewController: UITableViewController {
     
     func prepareJobSearchQueryViewController(viewController: JobSearchQueryViewController) {
         viewController.delegate = self
-        viewController.jobSearchQuery = self.currentJobSearchQuery
+        if let jobSearchQuery = self.currentJobSearchQuery {
+            viewController.jobSearchQuery = jobSearchQuery
+        } else {
+            viewController.jobSearchQuery = JobSearchQuery()
+        }
+        
     }
 
 }
 
 extension JobListViewController : JobSearchQueryViewControllerDelegate {
-    func jobSearchQueryViewController(didSave jobSearchQuery: JobSearchQuery) {
+    func jobSearchQueryViewController(jobSearchQueryViewController: JobSearchQueryViewController, didSave jobSearchQuery: JobSearchQuery) {
         self.dismissViewControllerAnimated(true) { () -> Void in
             self.performJobSearch(jobSearchQuery)
         }
     }
+    
+    func jobSearchQueryViewControllerDidCancel(jobSearchQueryViewController: JobSearchQueryViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }

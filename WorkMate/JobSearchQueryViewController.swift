@@ -9,7 +9,8 @@
 import UIKit
 
 protocol JobSearchQueryViewControllerDelegate : class {
-    func jobSearchQueryViewController(didSave jobSearchQuery: JobSearchQuery)
+    func jobSearchQueryViewController(jobSearchQueryViewController:JobSearchQueryViewController, didSave jobSearchQuery: JobSearchQuery)
+    func jobSearchQueryViewControllerDidCancel(jobSearchQueryViewController: JobSearchQueryViewController)
 }
 
 class JobSearchQueryViewController: UITableViewController {
@@ -31,8 +32,11 @@ class JobSearchQueryViewController: UITableViewController {
     @IBAction func save(sender: AnyObject) {
         if let jobSearchQuery = self.jobSearchQuery {
             jobSearchQuery.text = self.searchTextField.text
-            self.delegate?.jobSearchQueryViewController(didSave: jobSearchQuery)
+            self.delegate?.jobSearchQueryViewController(self, didSave: jobSearchQuery)
         }
     }
     
+    @IBAction func cancel(sender: AnyObject) {
+        self.delegate?.jobSearchQueryViewControllerDidCancel(self)
+    }
 }

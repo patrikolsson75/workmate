@@ -101,6 +101,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ändra sökning" id="4td-1c-0vb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8V1-t9-vSW">
+                            <connections>
+                                <action selector="cancel:" destination="26l-rJ-95b" id="QXm-p5-7cF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ogv-ZS-Bnd">
                             <connections>
                                 <action selector="save:" destination="26l-rJ-95b" id="xTi-H5-Hnf"/>
