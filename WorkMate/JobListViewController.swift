@@ -16,7 +16,7 @@ struct Job {
 class JobListViewController: UITableViewController {
 
     var matchningslista : Matchningslista?
-    var currentJobSearchQuery: JobSearchQuery?
+    private var currentJobSearchQuery: JobSearchQuery?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,14 +117,36 @@ class JobListViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "editSearchQuery" {
+            if (segue.destinationViewController is JobSearchQueryViewController) {
+                let destinationViewController = segue.destinationViewController as! JobSearchQueryViewController
+                self.prepareJobSearchQueryViewController(destinationViewController)
+            } else if (segue.destinationViewController is UINavigationController) {
+                let nav = segue.destinationViewController as! UINavigationController
+                if (nav.topViewController is JobSearchQueryViewController) {
+                    let destinationViewController = nav.topViewController as! JobSearchQueryViewController
+                    self.prepareJobSearchQueryViewController(destinationViewController)
+                }
+            }
+        }
     }
-    */
+    
+    func prepareJobSearchQueryViewController(viewController: JobSearchQueryViewController) {
+        viewController.delegate = self
+        viewController.jobSearchQuery = self.currentJobSearchQuery
+    }
 
+}
+
+extension JobListViewController : JobSearchQueryViewControllerDelegate {
+    func jobSearchQueryViewController(didSave jobSearchQuery: JobSearchQuery) {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            self.performJobSearch(jobSearchQuery)
+        }
+    }
 }
