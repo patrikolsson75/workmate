@@ -79,6 +79,13 @@ class JobListViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let matchningslista = self.matchningslista {
+            return "\(matchningslista.antal_platsannonser) annonser"
+        }
+        return nil
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
