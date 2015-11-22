@@ -30,6 +30,7 @@ class JobListViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: Selector("refreshJobSearch"), forControlEvents: UIControlEvents.ValueChanged)
         
+        self.performJobSearch(JobSearchQuery())
     }
 
     override func didReceiveMemoryWarning() {
