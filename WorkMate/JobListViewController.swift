@@ -16,6 +16,7 @@ struct Job {
 class JobListViewController: UITableViewController {
 
     var matchningslista : Matchningslista?
+    var currentJobSearchQuery: JobSearchQuery?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,24 +27,38 @@ class JobListViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        Alamofire.request(.GET, "http://api.arbetsformedlingen.se/platsannons/sok?antalrader=100&sida=1&q=s(sn(xcode))")
-            .responseData { response in
-                
-                if let responseData = response.result.value {
-                    if let matchlist = try? Matchningslista(jsonData: responseData) {
-                        self.matchningslista = matchlist
-                        self.tableView.reloadData()
-                    }
-                }
-                
-                
-
-        }
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: Selector("refreshJobSearch"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        let jobSearchQuery = JobSearchQuery()
+        jobSearchQuery.text = "xcode"
+        self.performJobSearch(jobSearchQuery)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func performJobSearch(jobSearchQuery: JobSearchQuery) {
+        self.refreshControl?.beginRefreshing()
+        Alamofire.request(.GET, "http://api.arbetsformedlingen.se/platsannons/sok?antalrader=100&sida=1&\(jobSearchQuery.queryString())")
+            .responseData { response in
+                self.refreshControl?.endRefreshing()
+                if let responseData = response.result.value {
+                    if let matchlist = try? Matchningslista(jsonData: responseData) {
+                        self.matchningslista = matchlist
+                        self.currentJobSearchQuery = jobSearchQuery
+                        self.tableView.reloadData()
+                    }
+                }
+        }
+    }
+    
+    func refreshJobSearch() {
+        if let jobSearchQuery = self.currentJobSearchQuery {
+            self.performJobSearch(jobSearchQuery)
+        }
     }
 
     // MARK: - Table view data source

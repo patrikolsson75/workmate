@@ -17,6 +17,8 @@
 		5FA995D11C0085C700BBDAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA995CF1C0085C700BBDAD3 /* LaunchScreen.storyboard */; };
 		5FA995E71C0085C800BBDAD3 /* WorkMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA995E61C0085C800BBDAD3 /* WorkMateUITests.swift */; };
 		5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA995F41C00861600BBDAD3 /* JobListViewController.swift */; };
+		5FAA9E1F1C0195900000C57B /* JobSearchQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */; };
+		5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA9E201C0196380000C57B /* JobSearchQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		5FA995E61C0085C800BBDAD3 /* WorkMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkMateUITests.swift; sourceTree = "<group>"; };
 		5FA995E81C0085C800BBDAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FA995F41C00861600BBDAD3 /* JobListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobListViewController.swift; sourceTree = "<group>"; };
+		5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQueryTests.swift; sourceTree = "<group>"; };
+		5FAA9E201C0196380000C57B /* JobSearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSearchQuery.swift; sourceTree = "<group>"; };
 		6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7210551137A271012CEEEF90 /* Pods-WorkMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */,
+				5FAA9E201C0196380000C57B /* JobSearchQuery.swift */,
 			);
 			name = AFKit;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				5FA5F59B1C00F94C00F2C1C5 /* Resources */,
 				5FA995DD1C0085C800BBDAD3 /* Info.plist */,
 				5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */,
+				5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */,
 			);
 			path = WorkMateTests;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			files = (
 				5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */,
 				5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */,
+				5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */,
 				5FA995C71C0085C700BBDAD3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FAA9E1F1C0195900000C57B /* JobSearchQueryTests.swift in Sources */,
 				5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
