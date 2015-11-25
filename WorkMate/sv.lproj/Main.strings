@@ -1,0 +1,24 @@
+
+/* Class = "UINavigationItem"; title = "Ändra sökning"; ObjectID = "4td-1c-0vb"; */
+"4td-1c-0vb.title" = "Ändra sökning";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5wp-1S-BkP"; */
+"5wp-1S-BkP.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "EyB-VD-99C"; */
+"EyB-VD-99C.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FLA-GZ-6Uq"; */
+"FLA-GZ-6Uq.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Lediga job"; ObjectID = "dAr-tL-vwx"; */
+"dAr-tL-vwx.title" = "Lediga job";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ouS-KW-wTA"; */
+"ouS-KW-wTA.text" = "Label";
+
+/* Class = "UITableViewSection"; footerTitle = "Skriv in den text du vill ska finnas i alla jobbannonser"; ObjectID = "rBR-B2-pRR"; */
+"rBR-B2-pRR.footerTitle" = "Skriv in den text du vill ska finnas i alla jobbannonser";
+
+/* Class = "UITableViewSection"; headerTitle = "Fritext"; ObjectID = "rBR-B2-pRR"; */
+"rBR-B2-pRR.headerTitle" = "Fritext";
