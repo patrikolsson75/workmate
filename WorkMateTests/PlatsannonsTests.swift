@@ -45,6 +45,66 @@ class PlatsannonsTests: XCTestCase {
         XCTAssertEqual(platsannons.kommunkod, 180)
     }
     
+    func testThatItCanParseArbetsplats() {
+        let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("platsannons", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonPath!)
+        let platsannons = try! Platsannons(jsonData: jsonData!)
+        let arbetsplats = platsannons.arbetsplats
+        let kontaktperson = arbetsplats!.kontaktpersoner![0]
+        
+        XCTAssertEqual(arbetsplats!.postadress, "Mörbyvägen 1")
+        XCTAssertEqual(arbetsplats!.logotypurl, "http://api.arbetsformedlingen.se/platsannons/6475275/logotyp")
+        XCTAssertEqual(arbetsplats!.land, "Sverige")
+        XCTAssertEqual(arbetsplats!.hemsida, "")
+        XCTAssertEqual(arbetsplats!.epostadress, "info@jobquest.se")
+        XCTAssertEqual(arbetsplats!.arbetsplatsnamn, "Jobquest Sverige AB")
+        XCTAssertEqual(arbetsplats!.postland, "Sverige")
+        XCTAssertEqual(arbetsplats!.postnummer, "15535")
+        XCTAssertEqual(arbetsplats!.besoksadress, "Mörbyvägen 1 15535 Nykvarn")
+        XCTAssertEqual(arbetsplats!.postort, "Nykvarn")
+        XCTAssertEqual(kontaktperson.namn, "JobQuest")
+        XCTAssertEqual(kontaktperson.telefonnummer, "")
+    }
+    
+    func testThatItCanParseVillkor() {
+        let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("platsannons", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonPath!)
+        let platsannons = try! Platsannons(jsonData: jsonData!)
+        let villkor = platsannons.villkor!
+        
+        XCTAssertEqual(villkor.varaktighet, "6 månader eller längre")
+        XCTAssertEqual(villkor.arbetstid, "Heltid")
+        XCTAssertEqual(villkor.lonetyp, "Fast och rörlig lön")
+        XCTAssertEqual(villkor.loneform, "Månadslön")
+        XCTAssertEqual(villkor.arbetstidvaraktighet, "Heltid 100%\r\nMöjlighet till förlängning")
+        XCTAssertEqual(villkor.tilltrade, "omgående")
+    }
+    
+    func testThatItCanParseAnsokan() {
+        let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("platsannons", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonPath!)
+        let platsannons = try! Platsannons(jsonData: jsonData!)
+        let ansokan = platsannons.ansokan!
+        
+        XCTAssertEqual(ansokan.referens, "10405")
+        XCTAssertEqual(dateStringFromDate(ansokan.sista_ansokningsdag!), "2015-12-05 23:00:00")
+        XCTAssertEqual(ansokan.ovrigt_om_ansokan, "")
+        XCTAssertEqual(ansokan.webbplats, "http://www.jobquest.se/lediga-jobb?mtrpage=assignment&mtrt=ams&mtrid=206")
+        XCTAssertEqual(ansokan.epostadress, "info@foretag.se")
+    }
+    
+    func testThatItCanParseKrav() {
+        let jsonPath = NSBundle(forClass: self.classForCoder).pathForResource("platsannons", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonPath!)
+        let platsannons = try! Platsannons(jsonData: jsonData!)
+        let krav = platsannons.krav!
+        
+        XCTAssertEqual(krav.egenbil, true)
+        XCTAssertEqual(krav.korkortstyper![0], "B")
+        XCTAssertEqual(krav.korkortstyper![1], "D")
+        
+    }
+    
     //MARK : Helper methods
     
     func dateStringFromDate(date : NSDate) -> String {

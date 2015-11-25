@@ -5,13 +5,15 @@
             "arbetstid": "Heltid",
             "lonetyp": "Fast och rörlig lön",
             "loneform": "Månadslön",
-            "arbetstidvaraktighet": "Heltid 100%\r\nMöjlighet till förlängning"
+            "arbetstidvaraktighet": "Heltid 100%\r\nMöjlighet till förlängning",
+            "tilltrade": "omgående"
         },
         "arbetsplats": {
             "postadress": "Mörbyvägen 1",
             "logotypurl": "http://api.arbetsformedlingen.se/platsannons/6475275/logotyp",
             "land": "Sverige",
             "hemsida": "",
+            "epostadress": "info@jobquest.se",
             "arbetsplatsnamn": "Jobquest Sverige AB",
             "kontaktpersonlista": {
                 "kontaktpersondata": [
@@ -30,10 +32,17 @@
             "referens": "10405",
             "sista_ansokningsdag": "2015-12-06T00:00:00+01:00",
             "ovrigt_om_ansokan": "",
-            "webbplats": "http://www.jobquest.se/lediga-jobb?mtrpage=assignment&mtrt=ams&mtrid=206"
+            "webbplats": "http://www.jobquest.se/lediga-jobb?mtrpage=assignment&mtrt=ams&mtrid=206",
+            "epostadress": "info@foretag.se"
         },
         "krav": {
-            "egenbil": false
+            "korkortslista": {
+                "korkortstyp": [
+                                "B",
+                                "D"
+                                ]
+            },
+            "egenbil": true
         },
         "annons": {
             "antalplatserVisa": 1,
