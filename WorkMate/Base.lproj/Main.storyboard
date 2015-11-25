@@ -69,16 +69,84 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adHeaderCell" rowHeight="92" id="WQD-Da-QjP" customClass="AdHeaderTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQD-Da-QjP" id="S3u-6O-6M4">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XGn-Fu-Aq0">
+                                            <rect key="frame" x="8" y="8" width="584" height="76"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wau-VG-8Ir">
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="25.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wc-rL-UAT">
+                                                    <rect key="frame" x="0.0" y="33.5" width="584" height="20"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrl-js-Q8O">
+                                                    <rect key="frame" x="0.0" y="61" width="584" height="14.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </stackView>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="XGn-Fu-Aq0" firstAttribute="leading" secondItem="S3u-6O-6M4" secondAttribute="leadingMargin" id="OVh-su-YYd"/>
+                                        <constraint firstItem="XGn-Fu-Aq0" firstAttribute="top" secondItem="S3u-6O-6M4" secondAttribute="topMargin" id="a9E-aG-sth"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XGn-Fu-Aq0" secondAttribute="trailing" id="df2-UO-S6L"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="XGn-Fu-Aq0" secondAttribute="bottom" id="ixW-e3-Ray"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Wrl-js-Q8O" id="Lzm-ia-Qnd"/>
+                                    <outlet property="titleLabel" destination="wau-VG-8Ir" id="fNe-Om-Izh"/>
+                                    <outlet property="workNameLabel" destination="4wc-rL-UAT" id="ZY5-fs-1dp"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adTextICell" id="Erc-26-kNU" customClass="LabelTableViewCell" customModule="WorkMate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="205.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Erc-26-kNU" id="fw5-Pa-DMw">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouS-KW-wTA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouS-KW-wTA">
                                             <rect key="frame" x="8" y="8" width="584" height="27.5"/>
                                             <animations/>
+                                            <mutableString key="text">Vi söker en skicklig iOS-utvecklare som kan utveckla appar för iPhone, och iPad.
+
+Vi letar efter dig som har:
+
+* Minst ett års erfarenhet av Objective-C / SWIFT
+
+* Minst ett års erfarenhet av Xcode, Interface Builder och Instruments.
+
+* Erfarenhet av web services och JSON.
+
+* Erfarenhet av att ladda upp iOS-appar via iTunes Connect.
+
+* Erfarenhet av att arbeta enligt en eller flera etablerade och välkända projektmetoder (exempelvis RUP och/eller SCRUM).
+
+* Erfarenhet av att arbeta med versionshantering (exempelvis Subversion eller Git).
+
+Det är meriterande (men inte avgörande) om du dessutom behärskar mjukvarudesign och grafik.
+</mutableString>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -95,45 +163,6 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="textContentLabel" destination="ouS-KW-wTA" id="FhL-CQ-uAJ"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adHeaderCell" rowHeight="74" id="WQD-Da-QjP" customClass="AdHeaderTableViewCell" customModule="WorkMate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="157.5" width="600" height="74"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQD-Da-QjP" id="S3u-6O-6M4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wp-1S-BkP">
-                                            <rect key="frame" x="8" y="8" width="584" height="32.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-GZ-6Uq">
-                                            <rect key="frame" x="8" y="48.5" width="584" height="17"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="FLA-GZ-6Uq" secondAttribute="bottom" id="1Vi-cG-W0y"/>
-                                        <constraint firstItem="FLA-GZ-6Uq" firstAttribute="leading" secondItem="S3u-6O-6M4" secondAttribute="leadingMargin" id="NmZ-ZO-t2r"/>
-                                        <constraint firstItem="5wp-1S-BkP" firstAttribute="top" secondItem="S3u-6O-6M4" secondAttribute="topMargin" id="OhW-c2-tF6"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="5wp-1S-BkP" secondAttribute="trailing" id="PVU-hd-Am8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="FLA-GZ-6Uq" secondAttribute="trailing" id="PdU-94-fC6"/>
-                                        <constraint firstItem="FLA-GZ-6Uq" firstAttribute="top" secondItem="5wp-1S-BkP" secondAttribute="bottom" constant="8" id="X0R-16-qra"/>
-                                        <constraint firstItem="5wp-1S-BkP" firstAttribute="leading" secondItem="S3u-6O-6M4" secondAttribute="leadingMargin" id="uoN-HD-NZo"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="titleLabel" destination="5wp-1S-BkP" id="XlA-MJ-4IF"/>
-                                    <outlet property="workNameLabel" destination="FLA-GZ-6Uq" id="wcO-D5-Lu7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

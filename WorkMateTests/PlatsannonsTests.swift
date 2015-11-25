@@ -34,7 +34,7 @@ class PlatsannonsTests: XCTestCase {
         
         XCTAssertEqual(platsannons.antalplatserVisa, 1)
         XCTAssertEqual(platsannons.annonsrubrik, "Systemutvecklare C# /.Net Södra Stockholm")
-        XCTAssertEqual(dateStringFromDate(platsannons.publiceraddatum), "2015-11-21 13:03:28")
+        XCTAssertEqual(dateStringFromDate(platsannons.publiceraddatum!), "2015-11-21 13:03:28")
         XCTAssertEqual(platsannons.yrkesid, 2419)
         XCTAssertEqual(platsannons.yrkesbenamning, "Systemutvecklare/Programmerare")
         XCTAssertEqual(platsannons.annonsid, "6475275")
@@ -91,6 +91,10 @@ class PlatsannonsTests: XCTestCase {
         XCTAssertEqual(ansokan.ovrigt_om_ansokan, "")
         XCTAssertEqual(ansokan.webbplats, "http://www.jobquest.se/lediga-jobb?mtrpage=assignment&mtrt=ams&mtrid=206")
         XCTAssertEqual(ansokan.epostadress, "info@foretag.se")
+    }
+    
+    func testThatItCanParseEmptyAnsokan() {
+        XCTAssertNotNil(Ansokan(dictionary: NSDictionary()))
     }
     
     func testThatItCanParseKrav() {

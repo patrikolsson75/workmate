@@ -84,7 +84,9 @@ struct Ansokan {
     
     init(dictionary : NSDictionary) {
         referens = dictionary["referens"] as? String
-        sista_ansokningsdag = Platsannons.dateFromServer(rfc: dictionary["sista_ansokningsdag"] as! String)
+        if let ansokningsdag = dictionary["sista_ansokningsdag"] as? String {
+            sista_ansokningsdag = Platsannons.dateFromServer(rfc: ansokningsdag)
+        }
         ovrigt_om_ansokan = dictionary["ovrigt_om_ansokan"] as? String
         webbplats = dictionary["webbplats"] as? String
         epostadress = dictionary["epostadress"] as? String
@@ -112,7 +114,7 @@ class Platsannons {
     
     let antalplatserVisa : Int
     let annonsrubrik : String
-    let publiceraddatum : NSDate
+    var publiceraddatum : NSDate?
     let yrkesid : Int
     let yrkesbenamning : String
     let annonsid : String
@@ -151,8 +153,6 @@ class Platsannons {
             self.annonsrubrik = annons["annonsrubrik"] as! String
             if let publiceraddatum = Platsannons.dateFromServer(rfcSubSecond: annons["publiceraddatum"] as! String) {
                 self.publiceraddatum = publiceraddatum
-            } else {
-                self.publiceraddatum = NSDate()
             }
             self.yrkesid = annons["yrkesid"] as! Int
             self.yrkesbenamning = annons["yrkesbenamning"] as! String
@@ -177,7 +177,6 @@ class Platsannons {
         } catch {
             self.antalplatserVisa = 0
             self.annonsrubrik = ""
-            self.publiceraddatum = NSDate()
             self.yrkesid = 0
             self.yrkesbenamning = ""
             self.annonsid = ""

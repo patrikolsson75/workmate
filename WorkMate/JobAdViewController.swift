@@ -13,6 +13,13 @@ class JobAdViewController: UITableViewController {
 
     var annonsid : String?
     var platsannons : Platsannons?
+    var mediumDateFormatter : NSDateFormatter {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .NoStyle
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +72,19 @@ class JobAdViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("adHeaderCell", forIndexPath: indexPath) as! AdHeaderTableViewCell
             cell.titleLabel.text = self.platsannons?.annonsrubrik
-            cell.workNameLabel.text = self.platsannons?.kommunnamn
+            cell.workNameLabel.text = self.platsannons?.arbetsplats?.arbetsplatsnamn
+            var descriptionText: String?
+            if let publiceraddatum = self.platsannons?.publiceraddatum {
+                descriptionText = "Publicerad: \(self.mediumDateFormatter.stringFromDate(publiceraddatum))"
+            }
+            if let annonsid = self.platsannons?.annonsid {
+                if descriptionText != nil {
+                    descriptionText = "\(descriptionText!), Annons-ID: \(annonsid)"
+                } else {
+                    descriptionText = "Annons-ID: \(annonsid)"
+                }
+            }
+            cell.descriptionLabel.text = descriptionText
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
