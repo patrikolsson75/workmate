@@ -33,19 +33,10 @@ class JobAdViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         
-        if let annonsid = self.annonsid {
-            let urlString = "http://api.arbetsformedlingen.se/platsannons/\(annonsid)"
-            Alamofire.request(.GET, urlString)
-                .responseData { response in
-                    if let responseData = response.result.value {
-                        if let platsannons = try? Platsannons(jsonData: responseData) {
-                            self.platsannons = platsannons
-                            self.title = self.platsannons?.annonsrubrik
-                            self.tableView.reloadData()
-                        }
-                    }
-            }
-        }
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: Selector("performFetch"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.performFetch()
         
     }
 
@@ -140,4 +131,21 @@ class JobAdViewController: UITableViewController {
     }
     */
 
+    func performFetch() {
+        if let annonsid = self.annonsid {
+            let urlString = "http://api.arbetsformedlingen.se/platsannons/\(annonsid)"
+            self.refreshControl?.beginRefreshing()
+            Alamofire.request(.GET, urlString)
+                .responseData { response in
+                    self.refreshControl?.endRefreshing()
+                    if let responseData = response.result.value {
+                        if let platsannons = try? Platsannons(jsonData: responseData) {
+                            self.platsannons = platsannons
+                            self.title = self.platsannons?.annonsrubrik
+                            self.tableView.reloadData()
+                        }
+                    }
+            }
+        }
+    }
 }
