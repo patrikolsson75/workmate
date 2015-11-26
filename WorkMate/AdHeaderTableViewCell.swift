@@ -13,6 +13,7 @@ class AdHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var workNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var applyLastLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

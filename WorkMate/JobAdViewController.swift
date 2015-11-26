@@ -49,7 +49,7 @@ class JobAdViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,28 +64,58 @@ class JobAdViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("adHeaderCell", forIndexPath: indexPath) as! AdHeaderTableViewCell
             cell.titleLabel.text = self.platsannons?.annonsrubrik
             cell.workNameLabel.text = self.platsannons?.arbetsplats?.arbetsplatsnamn
-            var descriptionText: String?
+            
+            
+            var descriptionTexts : Array<String> = []
+            
             if let publiceraddatum = self.platsannons?.publiceraddatum {
-                descriptionText = "Publicerad: \(self.mediumDateFormatter.stringFromDate(publiceraddatum))"
+                descriptionTexts.append("Publicerad: \(self.mediumDateFormatter.stringFromDate(publiceraddatum))")
             }
-            if let annonsid = self.platsannons?.annonsid {
-                if descriptionText != nil {
-                    descriptionText = "\(descriptionText!), Annons-ID: \(annonsid)"
-                } else {
-                    descriptionText = "Annons-ID: \(annonsid)"
-                }
+            
+            if let ort = self.platsannons?.kommunnamn {
+                descriptionTexts.append("Ort: \(ort)")
             }
-            cell.descriptionLabel.text = descriptionText
+            if let antal_platser = self.platsannons?.antal_platser {
+                descriptionTexts.append("Antal platser: \(antal_platser)")
+            }
+            
+            cell.descriptionLabel.text = descriptionTexts.joinWithSeparator(", ")
+            if let sista_ansoknings_datum = self.platsannons?.ansokan?.sista_ansokningsdag {
+                cell.applyLastLabel.text = "Ansök senast: \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))"
+            } else {
+                cell.applyLastLabel.text = "Ingen sista ansökningsdag"
+            }
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
+            cell.textContentLabel.text = self.platsannons?.annonstext
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
-            cell.textContentLabel.text = self.platsannons?.annonstext
+            
+            var workTimeTexts : Array<String> = []
+            if let varaktighet = self.platsannons?.villkor?.varaktighet {
+                workTimeTexts.append(varaktighet)
+            }
+            if let arbetstid = self.platsannons?.villkor?.arbetstid {
+                workTimeTexts.append(arbetstid)
+            }
+            if let arbetstidvaraktighet = self.platsannons?.villkor?.arbetstidvaraktighet {
+                workTimeTexts.append(arbetstidvaraktighet)
+            }
+            cell.textContentLabel?.text = workTimeTexts.joinWithSeparator("\n")
             return cell
         }
         
     }
     
-
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 2 {
+            return "Varaktighet, arbetstid"
+        }
+        return nil
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
