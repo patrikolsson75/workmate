@@ -10,6 +10,5 @@ import UIKit
 
 class LabelTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textContentLabel: UILabel!
-
+    @IBOutlet weak var textView: UITextView!
 }

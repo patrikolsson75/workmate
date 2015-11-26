@@ -49,7 +49,7 @@ class JobAdViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
-        return 4
+        return 6
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,7 +88,7 @@ class JobAdViewController: UITableViewController {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
-            cell.textContentLabel.text = self.platsannons?.annonstext
+            cell.textView.text = self.platsannons?.annonstext
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
@@ -103,9 +103,9 @@ class JobAdViewController: UITableViewController {
             if let arbetstidvaraktighet = self.platsannons?.villkor?.arbetstidvaraktighet {
                 workTimeTexts.append(arbetstidvaraktighet)
             }
-            cell.textContentLabel?.text = workTimeTexts.joinWithSeparator("\n")
+            cell.textView?.text = workTimeTexts.joinWithSeparator("\n")
             return cell
-        } else {
+        } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
             var textRows : Array<String> = []
             if let lonetyp = self.platsannons?.villkor?.lonetyp {
@@ -114,7 +114,50 @@ class JobAdViewController: UITableViewController {
             if let loneform = self.platsannons?.villkor?.loneform {
                 textRows.append(loneform)
             }
-            cell.textContentLabel?.text = textRows.joinWithSeparator("\n")
+            cell.textView?.text = textRows.joinWithSeparator("\n")
+            return cell
+        } else if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
+            var textRows : Array<String> = []
+            if let referens = self.platsannons?.ansokan?.referens where referens != "" {
+                textRows.append("Ange referens: \(referens)")
+            }
+            if let epostadress = self.platsannons?.ansokan?.epostadress {
+                textRows.append(epostadress)
+            }
+            if let webbplats = self.platsannons?.ansokan?.webbplats {
+                textRows.append(webbplats)
+            }
+            if let ovrigt_om_ansokan = self.platsannons?.ansokan?.ovrigt_om_ansokan {
+                textRows.append(ovrigt_om_ansokan)
+            }
+            cell.textView?.text = textRows.joinWithSeparator("\n")
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
+            var textRows : Array<String> = []
+            if let arbetsplatsnamn = self.platsannons?.arbetsplats?.arbetsplatsnamn {
+                textRows.append(arbetsplatsnamn)
+            }
+            if let postadress = self.platsannons?.arbetsplats?.postadress {
+                textRows.append(postadress)
+            }
+            if let postnummer = self.platsannons?.arbetsplats?.postnummer, let postort = self.platsannons?.arbetsplats?.postort {
+                textRows.append("\(postnummer) \(postort)")
+            }
+            if let postland = self.platsannons?.arbetsplats?.postland {
+                textRows.append(postland)
+            }
+            if let besoksadress = self.platsannons?.arbetsplats?.besoksadress {
+                textRows.append("Besöksadress: \(besoksadress)")
+            }
+            if let hemsida = self.platsannons?.arbetsplats?.hemsida {
+                textRows.append(hemsida)
+            }
+            if let epostadress = self.platsannons?.arbetsplats?.epostadress {
+                textRows.append(epostadress)
+            }
+            cell.textView?.text = textRows.joinWithSeparator("\n")
             return cell
         }
         
@@ -126,6 +169,12 @@ class JobAdViewController: UITableViewController {
         }
         if section == 3 {
             return "Lön"
+        }
+        if section == 4 {
+            return "Ansökan"
+        }
+        if section == 5 {
+            return "Arbetsplats"
         }
         return nil
     }
