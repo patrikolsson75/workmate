@@ -49,7 +49,7 @@ class JobAdViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
-        return 3
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,7 +90,7 @@ class JobAdViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
             cell.textContentLabel.text = self.platsannons?.annonstext
             return cell
-        } else {
+        } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
             
             var workTimeTexts : Array<String> = []
@@ -105,6 +105,17 @@ class JobAdViewController: UITableViewController {
             }
             cell.textContentLabel?.text = workTimeTexts.joinWithSeparator("\n")
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell", forIndexPath: indexPath) as! LabelTableViewCell
+            var textRows : Array<String> = []
+            if let lonetyp = self.platsannons?.villkor?.lonetyp {
+                textRows.append(lonetyp)
+            }
+            if let loneform = self.platsannons?.villkor?.loneform {
+                textRows.append(loneform)
+            }
+            cell.textContentLabel?.text = textRows.joinWithSeparator("\n")
+            return cell
         }
         
     }
@@ -112,6 +123,9 @@ class JobAdViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 2 {
             return "Varaktighet, arbetstid"
+        }
+        if section == 3 {
+            return "Lön"
         }
         return nil
     }
