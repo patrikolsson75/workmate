@@ -67,21 +67,19 @@ class JobAdViewController: UITableViewController {
             
             
             var descriptionTexts : Array<String> = []
-            
             if let publiceraddatum = self.platsannons?.publiceraddatum {
-                descriptionTexts.append("Publicerad: \(self.mediumDateFormatter.stringFromDate(publiceraddatum))")
+                descriptionTexts.append("Publicerad \(self.mediumDateFormatter.stringFromDate(publiceraddatum))")
             }
-            
             if let ort = self.platsannons?.kommunnamn {
-                descriptionTexts.append("Ort: \(ort)")
+                descriptionTexts.append(ort)
             }
             if let antal_platser = self.platsannons?.antal_platser {
-                descriptionTexts.append("Antal platser: \(antal_platser)")
+                descriptionTexts.append("Antal platser \(antal_platser)")
             }
+            cell.descriptionLabel.text = descriptionTexts.joinWithSeparator(" ● ")
             
-            cell.descriptionLabel.text = descriptionTexts.joinWithSeparator(", ")
             if let sista_ansoknings_datum = self.platsannons?.ansokan?.sista_ansokningsdag {
-                cell.applyLastLabel.text = "Ansök senast: \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))"
+                cell.applyLastLabel.text = "Ansök senast \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))"
             } else {
                 cell.applyLastLabel.text = "Ingen sista ansökningsdag"
             }
@@ -99,9 +97,6 @@ class JobAdViewController: UITableViewController {
             }
             if let arbetstid = self.platsannons?.villkor?.arbetstid {
                 workTimeTexts.append(arbetstid)
-            }
-            if let arbetstidvaraktighet = self.platsannons?.villkor?.arbetstidvaraktighet {
-                workTimeTexts.append(arbetstidvaraktighet)
             }
             cell.textView?.text = workTimeTexts.joinWithSeparator("\n")
             return cell
