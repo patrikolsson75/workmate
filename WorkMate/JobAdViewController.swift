@@ -283,6 +283,15 @@ class JobAdViewController: UITableViewController {
         }
     }
     
+    @IBAction func shareAd(sender: AnyObject) {
+        if let myWebsite = NSURL(string: self.platsannons?.platsannonsUrl ?? "")
+        {
+            let objectsToShare = [myWebsite]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
 }
 
 extension JobAdViewController : MFMailComposeViewControllerDelegate {
