@@ -60,7 +60,7 @@
 		5FA6214C1C0088C8002F36E0 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		5FA88CE71C063DB3005B4AFC /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		5FA88CE81C063DB3005B4AFC /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		5FA995C31C0085C700BBDAD3 /* WorkMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA995C31C0085C700BBDAD3 /* Lediga arbeten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lediga arbeten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA995C61C0085C700BBDAD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FA995CB1C0085C700BBDAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FA995CD1C0085C700BBDAD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		5FA995C41C0085C700BBDAD3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FA995C31C0085C700BBDAD3 /* WorkMate.app */,
+				5FA995C31C0085C700BBDAD3 /* Lediga arbeten.app */,
 				5FA995D71C0085C800BBDAD3 /* WorkMateTests.xctest */,
 				5FA995E21C0085C800BBDAD3 /* WorkMateUITests.xctest */,
 			);
@@ -232,7 +232,7 @@
 			);
 			name = WorkMate;
 			productName = WorkMate;
-			productReference = 5FA995C31C0085C700BBDAD3 /* WorkMate.app */;
+			productReference = 5FA995C31C0085C700BBDAD3 /* Lediga arbeten.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5FA995D61C0085C800BBDAD3 /* WorkMateTests */ = {

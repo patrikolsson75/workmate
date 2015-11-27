@@ -9,7 +9,7 @@
         <!--Lediga job-->
         <scene sceneID="BfH-W3-kvq">
             <objects>
-                <tableViewController id="CYU-kd-8FQ" customClass="JobListViewController" customModule="WorkMate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CYU-kd-8FQ" customClass="JobListViewController" customModule="Lediga_arbeten" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="t7X-fJ-06o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,14 +62,14 @@
         <!--Job Ad View Controller-->
         <scene sceneID="LIU-Ez-8Pj">
             <objects>
-                <tableViewController id="2Ra-iZ-smx" customClass="JobAdViewController" customModule="WorkMate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2Ra-iZ-smx" customClass="JobAdViewController" customModule="Lediga_arbeten" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9qw-RG-OFH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adHeaderCell" rowHeight="110" id="WQD-Da-QjP" customClass="AdHeaderTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adHeaderCell" rowHeight="110" id="WQD-Da-QjP" customClass="AdHeaderTableViewCell" customModule="Lediga_arbeten" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQD-Da-QjP" id="S3u-6O-6M4">
@@ -127,7 +127,7 @@
                                     <outlet property="workNameLabel" destination="4wc-rL-UAT" id="ZY5-fs-1dp"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adTextICell" id="Erc-26-kNU" customClass="LabelTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adTextICell" id="Erc-26-kNU" customClass="LabelTableViewCell" customModule="Lediga_arbeten" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="223.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Erc-26-kNU" id="fw5-Pa-DMw">
@@ -157,7 +157,7 @@
                                     <outlet property="textView" destination="eWE-wU-spU" id="AX2-kh-0XK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adButtonCell" id="ib6-xo-ajZ" customClass="ButtonTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adButtonCell" id="ib6-xo-ajZ" customClass="ButtonTableViewCell" customModule="Lediga_arbeten" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="267.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ib6-xo-ajZ" id="h0t-Dh-L9Z">
@@ -198,7 +198,7 @@
         <!--Ändra sökning-->
         <scene sceneID="73S-VN-nbm">
             <objects>
-                <tableViewController id="26l-rJ-95b" customClass="JobSearchQueryViewController" customModule="WorkMate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="26l-rJ-95b" customClass="JobSearchQueryViewController" customModule="Lediga_arbeten" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Pmm-T4-rKN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

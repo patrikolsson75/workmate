@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5FA995C21C0085C700BBDAD3"
-               BuildableName = "WorkMate.app"
+               BuildableName = "Lediga arbeten.app"
                BlueprintName = "WorkMate"
                ReferencedContainer = "container:WorkMate.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FA995C21C0085C700BBDAD3"
-            BuildableName = "WorkMate.app"
+            BuildableName = "Lediga arbeten.app"
             BlueprintName = "WorkMate"
             ReferencedContainer = "container:WorkMate.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FA995C21C0085C700BBDAD3"
-            BuildableName = "WorkMate.app"
+            BuildableName = "Lediga arbeten.app"
             BlueprintName = "WorkMate"
             ReferencedContainer = "container:WorkMate.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FA995C21C0085C700BBDAD3"
-            BuildableName = "WorkMate.app"
+            BuildableName = "Lediga arbeten.app"
             BlueprintName = "WorkMate"
             ReferencedContainer = "container:WorkMate.xcodeproj">
          </BuildableReference>

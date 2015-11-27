@@ -14,6 +14,6 @@ class LabelTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.textView.contentInset = UIEdgeInsetsMake(-4,-4,0,0);
+        self.textView.contentInset = UIEdgeInsetsMake(0,-4,0,0);
     }
 }

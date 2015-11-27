@@ -186,13 +186,13 @@ class JobAdViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
         
         var workTimeTexts : Array<String> = []
-        if let varaktighet = self.platsannons?.villkor?.varaktighet {
+        if let varaktighet = self.platsannons?.villkor?.varaktighet where varaktighet != "" {
             workTimeTexts.append(varaktighet)
         }
-        if let arbetstid = self.platsannons?.villkor?.arbetstid {
+        if let arbetstid = self.platsannons?.villkor?.arbetstid where arbetstid != "" {
             workTimeTexts.append(arbetstid)
         }
-        cell.textView?.text = workTimeTexts.joinWithSeparator("\n")
+        cell.textView?.text = workTimeTexts.joinWithSeparator(" ● ")
         tableSection.cells.append(cell)
         return tableSection
     }
@@ -216,11 +216,7 @@ class JobAdViewController: UITableViewController {
     func applyTableSection() -> TableSection {
         var tableSection = TableSection()
         tableSection.title = "Ansökan"
-        let textCell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
-        var textRows : Array<String> = []
-        if let referens = self.platsannons?.ansokan?.referens where referens != "" {
-            textRows.append("Ange referens: \(referens)")
-        }
+        
         if let epostadress = self.platsannons?.ansokan?.epostadress where epostadress != "" {
             let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
             buttonCell.button.setTitle("Ansök genom epost", forState: .Normal)
@@ -233,11 +229,20 @@ class JobAdViewController: UITableViewController {
             buttonCell.button.addTarget(self, action: Selector("applyOnWebPage"), forControlEvents: .TouchUpInside)
             tableSection.cells.append(buttonCell)
         }
+        
+        var textRows : Array<String> = []
+        if let referens = self.platsannons?.ansokan?.referens where referens != "" {
+            textRows.append("Ange referens: \(referens)")
+        }
         if let ovrigt_om_ansokan = self.platsannons?.ansokan?.ovrigt_om_ansokan where ovrigt_om_ansokan != "" {
             textRows.append(ovrigt_om_ansokan)
         }
-        textCell.textView?.text = textRows.joinWithSeparator("\n")
-        tableSection.cells.append(textCell)
+        if textRows.count > 0 {
+            let textCell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
+            textCell.textView?.text = textRows.joinWithSeparator("\n")
+            tableSection.cells.append(textCell)
+        }
+        
         return tableSection
     }
     
