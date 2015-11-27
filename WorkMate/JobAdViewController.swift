@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MessageUI
 
 struct TableSection {
     var title : String?
@@ -215,22 +216,28 @@ class JobAdViewController: UITableViewController {
     func applyTableSection() -> TableSection {
         var tableSection = TableSection()
         tableSection.title = "Ansökan"
-        let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
+        let textCell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
         var textRows : Array<String> = []
         if let referens = self.platsannons?.ansokan?.referens where referens != "" {
             textRows.append("Ange referens: \(referens)")
         }
-        if let epostadress = self.platsannons?.ansokan?.epostadress {
-            textRows.append(epostadress)
+        if let epostadress = self.platsannons?.ansokan?.epostadress where epostadress != "" {
+            let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
+            buttonCell.button.setTitle("Ansök genom epost", forState: .Normal)
+            buttonCell.button.addTarget(self, action: Selector("applyWithEmail"), forControlEvents: .TouchUpInside)
+            tableSection.cells.append(buttonCell)
         }
-        if let webbplats = self.platsannons?.ansokan?.webbplats {
-            textRows.append(webbplats)
+        if let webbplats = self.platsannons?.ansokan?.webbplats where webbplats != "" {
+            let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
+            buttonCell.button.setTitle("Ansök genom webbsida", forState: .Normal)
+            buttonCell.button.addTarget(self, action: Selector("applyOnWebPage"), forControlEvents: .TouchUpInside)
+            tableSection.cells.append(buttonCell)
         }
-        if let ovrigt_om_ansokan = self.platsannons?.ansokan?.ovrigt_om_ansokan {
+        if let ovrigt_om_ansokan = self.platsannons?.ansokan?.ovrigt_om_ansokan where ovrigt_om_ansokan != "" {
             textRows.append(ovrigt_om_ansokan)
         }
-        cell.textView?.text = textRows.joinWithSeparator("\n")
-        tableSection.cells.append(cell)
+        textCell.textView?.text = textRows.joinWithSeparator("\n")
+        tableSection.cells.append(textCell)
         return tableSection
     }
     
@@ -263,5 +270,37 @@ class JobAdViewController: UITableViewController {
         cell.textView?.text = textRows.joinWithSeparator("\n")
         tableSection.cells.append(cell)
         return tableSection
+    }
+    
+    func applyOnWebPage() {
+        if let webbplats = self.platsannons?.ansokan?.webbplats, let url = NSURL(string: webbplats) where webbplats != "" {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+}
+
+extension JobAdViewController : MFMailComposeViewControllerDelegate {
+    
+    func applyWithEmail() {
+        if let epostadress = self.platsannons?.ansokan?.epostadress where epostadress != "" {
+            if MFMailComposeViewController.canSendMail() {
+                let composer = MFMailComposeViewController()
+                
+                var subjectText = "Arbetsansökan"
+                if let referens = self.platsannons?.ansokan?.referens where referens != "" {
+                    subjectText.appendContentsOf(" med referens \(referens)")
+                }
+                
+                composer.setSubject(subjectText)
+                composer.setToRecipients([epostadress])
+                composer.mailComposeDelegate = self
+                self.showViewController(composer, sender: self)
+            }
+        }
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

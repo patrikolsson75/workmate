@@ -157,6 +157,32 @@
                                     <outlet property="textView" destination="eWE-wU-spU" id="AX2-kh-0XK"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adButtonCell" id="ib6-xo-ajZ" customClass="ButtonTableViewCell" customModule="WorkMate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="267.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ib6-xo-ajZ" id="h0t-Dh-L9Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFW-Nz-lsv">
+                                            <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                            <animations/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="GFW-Nz-lsv" secondAttribute="bottom" id="7i9-h4-Elz"/>
+                                        <constraint firstItem="GFW-Nz-lsv" firstAttribute="top" secondItem="h0t-Dh-L9Z" secondAttribute="topMargin" id="Kdd-nS-XSd"/>
+                                        <constraint firstItem="GFW-Nz-lsv" firstAttribute="leading" secondItem="h0t-Dh-L9Z" secondAttribute="leadingMargin" id="bWp-OW-64S"/>
+                                        <constraint firstItem="GFW-Nz-lsv" firstAttribute="trailing" secondItem="h0t-Dh-L9Z" secondAttribute="trailingMargin" id="tKy-24-lp8"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="button" destination="GFW-Nz-lsv" id="b2D-tt-OKW"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="2Ra-iZ-smx" id="cci-Dh-eld"/>
