@@ -133,16 +133,22 @@ class JobAdViewController: UITableViewController {
         cell.workNameLabel.text = self.platsannons?.arbetsplats?.arbetsplatsnamn
         
         
-        var textRows = TextRows()
+        var textRowsOne = TextRows()
         
         if let publiceraddatum = self.platsannons?.publiceraddatum {
-            textRows.addRow(self.mediumDateFormatter.stringFromDate(publiceraddatum), label: "Publicerad ")
+            textRowsOne.addRow(self.mediumDateFormatter.stringFromDate(publiceraddatum), label: "Publicerad ")
         }
-        textRows.addRow(self.platsannons?.kommunnamn)
-        textRows.addRow(self.platsannons?.villkor?.varaktighet)
-        textRows.addRow(self.platsannons?.villkor?.arbetstid)
-        textRows.addRow(self.platsannons?.antal_platser, label: "Antal platser ")
-        cell.descriptionLabel.text = textRows.stringWithSeparator(" ● ")
+        textRowsOne.addRow(self.platsannons?.kommunnamn)
+        textRowsOne.addRow(self.platsannons?.antal_platser, label: "Antal platser ")
+        
+        var textRowsTwo = TextRows()
+        textRowsTwo.addRow(self.platsannons?.villkor?.varaktighet)
+        textRowsTwo.addRow(self.platsannons?.villkor?.arbetstid)
+        
+        var textRowsSum = TextRows()
+        textRowsSum.addRow(textRowsTwo.stringWithSeparator(" ● "))
+        textRowsSum.addRow(textRowsOne.stringWithSeparator(" ● "))
+        cell.descriptionLabel.text = textRowsSum.stringWithSeparator("\n")
         
         if let sista_ansoknings_datum = self.platsannons?.ansokan?.sista_ansokningsdag {
             let cal = NSCalendar.currentCalendar()
