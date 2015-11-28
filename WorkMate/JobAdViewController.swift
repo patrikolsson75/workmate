@@ -145,7 +145,15 @@ class JobAdViewController: UITableViewController {
         cell.descriptionLabel.text = textRows.stringWithSeparator(" ● ")
         
         if let sista_ansoknings_datum = self.platsannons?.ansokan?.sista_ansokningsdag {
-            cell.applyLastLabel.text = "Ansök senast \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))"
+            let cal = NSCalendar.currentCalendar()
+            let components = cal.components(NSCalendarUnit.Day, fromDate: NSDate(), toDate: sista_ansoknings_datum, options: NSCalendarOptions.init(rawValue: 0))
+            let daysLeftToApply = components.day
+            if daysLeftToApply < 5 {
+                cell.applyLastLabel.textColor = UIColor.redColor()
+            } else {
+                cell.applyLastLabel.textColor = UIColor.blackColor()
+            }
+            cell.applyLastLabel.text = "Ansök senast \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))  (\(daysLeftToApply) dagar)"
         } else {
             cell.applyLastLabel.text = "Ingen sista ansökningsdag"
         }
