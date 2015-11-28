@@ -11,8 +11,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "FLA-GZ-6Uq"; */
 "FLA-GZ-6Uq.text" = "Label";
 
-/* Class = "UINavigationItem"; title = "Lediga job"; ObjectID = "dAr-tL-vwx"; */
-"dAr-tL-vwx.title" = "Lediga job";
+/* Class = "UINavigationItem"; title = "Lediga arbeten"; ObjectID = "dAr-tL-vwx"; */
+"dAr-tL-vwx.title" = "Lediga arbeten";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ouS-KW-wTA"; */
 "ouS-KW-wTA.text" = "Label";
