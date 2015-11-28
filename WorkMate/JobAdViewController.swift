@@ -15,6 +15,40 @@ struct TableSection {
     var cells : Array<UITableViewCell> = []
 }
 
+struct TextRows {
+    private var textRows : Array<String> = []
+    
+    mutating func addRow(textRow: String?) {
+        if let textRow = textRow where textRow != "" {
+            textRows.append(textRow)
+        }
+    }
+    
+    mutating func addRow(textRow: String?, label: String) {
+        if let textRow = textRow where textRow != "" {
+            textRows.append(label + " " + textRow)
+        }
+    }
+    
+    mutating func addRow(columns: [String?]) {
+        var validColumns : Array<String> = []
+        for column in columns {
+            if let _ = column {
+                validColumns.append(column!)
+            }
+        }
+        textRows.append(validColumns.joinWithSeparator(" "))
+    }
+    
+    func stringWithSeparator(separator: String) -> String {
+        return textRows.joinWithSeparator(separator)
+    }
+    
+    func hasRows() -> Bool {
+        return textRows.count > 0
+    }
+}
+
 class JobAdViewController: UITableViewController {
 
     var annonsid : String?
@@ -31,11 +65,7 @@ class JobAdViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.clearsSelectionOnViewWillAppear = false
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
@@ -63,7 +93,6 @@ class JobAdViewController: UITableViewController {
 
         return self.tableSections[section].cells.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return self.tableSections[indexPath.section].cells[indexPath.row]
@@ -72,51 +101,6 @@ class JobAdViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.tableSections[section].title
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     func performFetch() {
         if let annonsid = self.annonsid {
@@ -128,11 +112,9 @@ class JobAdViewController: UITableViewController {
                     if let responseData = response.result.value {
                         if let platsannons = try? Platsannons(jsonData: responseData) {
                             self.platsannons = platsannons
-                            self.title = self.platsannons?.annonsrubrik
                             self.tableSections.removeAll()
                             self.tableSections.append(self.headerTableSection())
                             self.tableSections.append(self.textTableSection())
-                            self.tableSections.append(self.workTimeTableSection())
                             self.tableSections.append(self.paymentTableSection())
                             self.tableSections.append(self.applyTableSection())
                             self.tableSections.append(self.workPlaceTableSection())
@@ -151,17 +133,16 @@ class JobAdViewController: UITableViewController {
         cell.workNameLabel.text = self.platsannons?.arbetsplats?.arbetsplatsnamn
         
         
-        var descriptionTexts : Array<String> = []
+        var textRows = TextRows()
+        
         if let publiceraddatum = self.platsannons?.publiceraddatum {
-            descriptionTexts.append("Publicerad \(self.mediumDateFormatter.stringFromDate(publiceraddatum))")
+            textRows.addRow(self.mediumDateFormatter.stringFromDate(publiceraddatum), label: "Publicerad ")
         }
-        if let ort = self.platsannons?.kommunnamn {
-            descriptionTexts.append(ort)
-        }
-        if let antal_platser = self.platsannons?.antal_platser {
-            descriptionTexts.append("Antal platser \(antal_platser)")
-        }
-        cell.descriptionLabel.text = descriptionTexts.joinWithSeparator(" ● ")
+        textRows.addRow(self.platsannons?.kommunnamn)
+        textRows.addRow(self.platsannons?.villkor?.varaktighet)
+        textRows.addRow(self.platsannons?.villkor?.arbetstid)
+        textRows.addRow(self.platsannons?.antal_platser, label: "Antal platser ")
+        cell.descriptionLabel.text = textRows.stringWithSeparator(" ● ")
         
         if let sista_ansoknings_datum = self.platsannons?.ansokan?.sista_ansokningsdag {
             cell.applyLastLabel.text = "Ansök senast \(self.mediumDateFormatter.stringFromDate(sista_ansoknings_datum))"
@@ -179,36 +160,15 @@ class JobAdViewController: UITableViewController {
         tableSection.cells.append(cell)
         return tableSection
     }
-    
-    func workTimeTableSection() -> TableSection {
-        var tableSection = TableSection()
-        tableSection.title = "Varaktighet, arbetstid"
-        let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
-        
-        var workTimeTexts : Array<String> = []
-        if let varaktighet = self.platsannons?.villkor?.varaktighet where varaktighet != "" {
-            workTimeTexts.append(varaktighet)
-        }
-        if let arbetstid = self.platsannons?.villkor?.arbetstid where arbetstid != "" {
-            workTimeTexts.append(arbetstid)
-        }
-        cell.textView?.text = workTimeTexts.joinWithSeparator(" ● ")
-        tableSection.cells.append(cell)
-        return tableSection
-    }
-    
+
     func paymentTableSection() -> TableSection {
         var tableSection = TableSection()
         tableSection.title = "Lön"
         let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
-        var textRows : Array<String> = []
-        if let lonetyp = self.platsannons?.villkor?.lonetyp {
-            textRows.append(lonetyp)
-        }
-        if let loneform = self.platsannons?.villkor?.loneform {
-            textRows.append(loneform)
-        }
-        cell.textView?.text = textRows.joinWithSeparator("\n")
+        var textRows = TextRows()
+        textRows.addRow(self.platsannons?.villkor?.lonetyp)
+        textRows.addRow(self.platsannons?.villkor?.loneform)
+        cell.textView?.text = textRows.stringWithSeparator("\n")
         tableSection.cells.append(cell)
         return tableSection
     }
@@ -216,6 +176,16 @@ class JobAdViewController: UITableViewController {
     func applyTableSection() -> TableSection {
         var tableSection = TableSection()
         tableSection.title = "Ansökan"
+        
+        var textRows = TextRows()
+        textRows.addRow(self.platsannons?.ansokan?.referens, label: "Ange referens: ")
+        textRows.addRow(self.platsannons?.ansokan?.ovrigt_om_ansokan)
+        
+        if textRows.hasRows() {
+            let textCell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
+            textCell.textView?.text = textRows.stringWithSeparator("\n")
+            tableSection.cells.append(textCell)
+        }
         
         if let epostadress = self.platsannons?.ansokan?.epostadress where epostadress != "" {
             let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
@@ -230,19 +200,6 @@ class JobAdViewController: UITableViewController {
             tableSection.cells.append(buttonCell)
         }
         
-        var textRows : Array<String> = []
-        if let referens = self.platsannons?.ansokan?.referens where referens != "" {
-            textRows.append("Ange referens: \(referens)")
-        }
-        if let ovrigt_om_ansokan = self.platsannons?.ansokan?.ovrigt_om_ansokan where ovrigt_om_ansokan != "" {
-            textRows.append(ovrigt_om_ansokan)
-        }
-        if textRows.count > 0 {
-            let textCell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
-            textCell.textView?.text = textRows.joinWithSeparator("\n")
-            tableSection.cells.append(textCell)
-        }
-        
         return tableSection
     }
     
@@ -250,29 +207,15 @@ class JobAdViewController: UITableViewController {
         var tableSection = TableSection()
         tableSection.title = "Arbetsplats"
         let cell = tableView.dequeueReusableCellWithIdentifier("adTextICell") as! LabelTableViewCell
-        var textRows : Array<String> = []
-        if let arbetsplatsnamn = self.platsannons?.arbetsplats?.arbetsplatsnamn {
-            textRows.append(arbetsplatsnamn)
-        }
-        if let postadress = self.platsannons?.arbetsplats?.postadress {
-            textRows.append(postadress)
-        }
-        if let postnummer = self.platsannons?.arbetsplats?.postnummer, let postort = self.platsannons?.arbetsplats?.postort {
-            textRows.append("\(postnummer) \(postort)")
-        }
-        if let postland = self.platsannons?.arbetsplats?.postland {
-            textRows.append(postland)
-        }
-        if let besoksadress = self.platsannons?.arbetsplats?.besoksadress {
-            textRows.append("Besöksadress: \(besoksadress)")
-        }
-        if let hemsida = self.platsannons?.arbetsplats?.hemsida {
-            textRows.append(hemsida)
-        }
-        if let epostadress = self.platsannons?.arbetsplats?.epostadress {
-            textRows.append(epostadress)
-        }
-        cell.textView?.text = textRows.joinWithSeparator("\n")
+        var textRows = TextRows()
+        textRows.addRow(self.platsannons?.arbetsplats?.arbetsplatsnamn)
+        textRows.addRow(self.platsannons?.arbetsplats?.postadress)
+        textRows.addRow([self.platsannons?.arbetsplats?.postnummer, "", self.platsannons?.arbetsplats?.postort])
+        textRows.addRow(self.platsannons?.arbetsplats?.postland)
+        textRows.addRow(self.platsannons?.arbetsplats?.besoksadress, label: "\nBesöksadress: ")
+        textRows.addRow(self.platsannons?.arbetsplats?.hemsida, label: "Webb: ")
+        textRows.addRow(self.platsannons?.arbetsplats?.epostadress, label: "E-post: ")
+        cell.textView?.text = textRows.stringWithSeparator("\n")
         tableSection.cells.append(cell)
         return tableSection
     }
