@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Lediga job-->
+        <!--Lediga arbeten-->
         <scene sceneID="BfH-W3-kvq">
             <objects>
                 <tableViewController id="CYU-kd-8FQ" customClass="JobListViewController" customModule="Lediga_arbeten" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                             <outlet property="delegate" destination="CYU-kd-8FQ" id="pZl-7h-Re9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lediga job" id="dAr-tL-vwx">
+                    <navigationItem key="navigationItem" title="Lediga arbeten" id="dAr-tL-vwx">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="rML-RZ-fwZ">
                             <connections>
                                 <segue destination="4dz-24-EWl" kind="popoverPresentation" identifier="editSearchQuery" popoverAnchorBarButtonItem="rML-RZ-fwZ" id="4fp-Xm-Huy">
