@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CCB15FAF9070A67E6F43201D'
+               BlueprintIdentifier = '5178AB8A4772A5AC03DF0AA8'
                BlueprintName = 'Pods-WorkMate'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_WorkMate.framework'>
