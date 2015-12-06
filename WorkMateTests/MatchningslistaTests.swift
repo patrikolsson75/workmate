@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import WorkMate
+@testable import Lediga_arbeten
 
 class MatchningslistaTests: XCTestCase {
     

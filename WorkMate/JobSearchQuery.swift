@@ -11,16 +11,25 @@ import Foundation
 class JobSearchQuery {
     
     var text : String?
+    var counties : Array<County> = []
     
     func queryString() -> String {
         
+        var parameters = ""
+        
         if let text = self.text {
             if let encodedText = NSString(string: text).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
-                return "q=s(sn(\(encodedText)))"
+                parameters += "sn(\(encodedText))"
             }
         }
         
-        return "q=s()"
+        if self.counties.count > 0 {
+            let countiesIds = self.counties.map({ String($0.id) })
+            let countiesString = countiesIds.joinWithSeparator(",")
+            parameters += "go(\(countiesString))"
+        }
+        
+        return "q=s(\(parameters))"
     }
     
 }

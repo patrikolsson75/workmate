@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import WorkMate
+@testable import Lediga_arbeten
 
 class JobSearchQueryTests: XCTestCase {
     
@@ -43,5 +43,13 @@ class JobSearchQueryTests: XCTestCase {
         searchQuery.text = "x code"
         
         XCTAssertEqual(searchQuery.queryString(), "q=s(sn(x%20code))")
+    }
+    
+    func testThatItAddsCounties() {
+        let searchQuery = JobSearchQuery()
+        
+        searchQuery.counties.append(County(name: "Stockholm", id: 1))
+        
+        XCTAssertEqual(searchQuery.queryString(), "q=s(go(1))")
     }
 }

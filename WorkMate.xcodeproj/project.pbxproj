@@ -13,6 +13,9 @@
 		5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */; };
 		5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */; };
 		5F9ECF8A1C0F9C1D00059A6B /* geoareas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9ECF891C0F9C1D00059A6B /* geoareas.plist */; };
+		5F9ECF8C1C0F9D7E00059A6B /* GeographicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ECF8B1C0F9D7E00059A6B /* GeographicManager.swift */; };
+		5F9ECF8E1C0F9E1D00059A6B /* GeographicManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ECF8D1C0F9E1D00059A6B /* GeographicManagerTests.swift */; };
+		5F9ECF901C0FABF800059A6B /* SelectItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ECF8F1C0FABF800059A6B /* SelectItemsViewController.swift */; };
 		5FA5F59D1C00F97300F2C1C5 /* matchningslista.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */; };
 		5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */; };
 		5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */; };
@@ -61,6 +64,9 @@
 		5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5F9ECF891C0F9C1D00059A6B /* geoareas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = geoareas.plist; sourceTree = "<group>"; };
+		5F9ECF8B1C0F9D7E00059A6B /* GeographicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographicManager.swift; sourceTree = "<group>"; };
+		5F9ECF8D1C0F9E1D00059A6B /* GeographicManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographicManagerTests.swift; sourceTree = "<group>"; };
+		5F9ECF8F1C0FABF800059A6B /* SelectItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectItemsViewController.swift; sourceTree = "<group>"; };
 		5FA5F59C1C00F97300F2C1C5 /* matchningslista.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matchningslista.json; sourceTree = "<group>"; };
 		5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchningslistaTests.swift; sourceTree = "<group>"; };
 		5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matchningslista.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 				5FA5F5A11C00FA4500F2C1C5 /* Matchningslista.swift */,
 				5FAA9E201C0196380000C57B /* JobSearchQuery.swift */,
 				5FAA9E2C1C01CC5A0000C57B /* Platsannons.swift */,
+				5F9ECF8B1C0F9D7E00059A6B /* GeographicManager.swift */,
 			);
 			name = AFKit;
 			sourceTree = "<group>";
@@ -202,6 +209,7 @@
 				5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */,
 				5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */,
 				5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */,
+				5F9ECF8F1C0FABF800059A6B /* SelectItemsViewController.swift */,
 			);
 			path = WorkMate;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				5FA5F59E1C00F9D000F2C1C5 /* MatchningslistaTests.swift */,
 				5FAA9E1E1C0195900000C57B /* JobSearchQueryTests.swift */,
 				5FAA9E2A1C01CBE20000C57B /* PlatsannonsTests.swift */,
+				5F9ECF8D1C0F9E1D00059A6B /* GeographicManagerTests.swift */,
 			);
 			path = WorkMateTests;
 			sourceTree = "<group>";
@@ -470,12 +479,14 @@
 				5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */,
 				5FA5F5A21C00FA4500F2C1C5 /* Matchningslista.swift in Sources */,
 				5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */,
+				5F9ECF8C1C0F9D7E00059A6B /* GeographicManager.swift in Sources */,
 				5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */,
 				5FAA9E2D1C01CC5A0000C57B /* Platsannons.swift in Sources */,
 				5FA995C71C0085C700BBDAD3 /* AppDelegate.swift in Sources */,
 				5F074D421C08ED1700B860D4 /* ButtonTableViewCell.swift in Sources */,
 				5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */,
 				5FAA9E271C01C3E90000C57B /* JobAdViewController.swift in Sources */,
+				5F9ECF901C0FABF800059A6B /* SelectItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +496,7 @@
 			files = (
 				5FAA9E1F1C0195900000C57B /* JobSearchQueryTests.swift in Sources */,
 				5FA5F59F1C00F9D000F2C1C5 /* MatchningslistaTests.swift in Sources */,
+				5F9ECF8E1C0F9E1D00059A6B /* GeographicManagerTests.swift in Sources */,
 				5FAA9E2B1C01CBE20000C57B /* PlatsannonsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,7 +696,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.in2objects.WorkMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkMate.app/WorkMate";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lediga arbeten.app/Lediga arbeten";
 			};
 			name = Debug;
 		};
@@ -696,7 +708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.in2objects.WorkMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkMate.app/WorkMate";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lediga arbeten.app/Lediga arbeten";
 			};
 			name = Release;
 		};
