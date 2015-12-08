@@ -8,6 +8,16 @@
 
 import UIKit
 
+class JobSearchQueryTableSection {
+    var title : String?
+    var indentWhileEditing : Bool = true
+    var cellForRow : ((row: Int) -> (UITableViewCell))?
+    var cellCount : (() -> (Int))?
+    var editingStyleForRow : ((row: Int) -> (UITableViewCellEditingStyle))?
+    var commitEditingStyle : ((indexPath: NSIndexPath, editingStyle: UITableViewCellEditingStyle) -> Void)?
+    
+}
+
 protocol JobSearchQueryViewControllerDelegate : class {
     func jobSearchQueryViewController(jobSearchQueryViewController:JobSearchQueryViewController, didSave jobSearchQuery: JobSearchQuery)
     func jobSearchQueryViewControllerDidCancel(jobSearchQueryViewController: JobSearchQueryViewController)
@@ -18,10 +28,14 @@ class JobSearchQueryViewController: UITableViewController {
     weak var delegate : JobSearchQueryViewControllerDelegate?
     var jobSearchQuery : JobSearchQuery?
     let geographicManager = GeographicManager()
+    var tableSections : Array<JobSearchQueryTableSection> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.editing = true
+        
+        self.tableSections.append(self.searchTextTableSection())
+        self.tableSections.append(self.countyTableSection())
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,111 +71,94 @@ class JobSearchQueryViewController: UITableViewController {
         self.delegate?.jobSearchQueryViewControllerDidCancel(self)
     }
     
-}
-
-extension JobSearchQueryViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return (self.jobSearchQuery?.counties.count ?? 0) + 1
-        default:
-            return 0
-        }
-        
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Fritext"
-        case 1:
-            return "Län"
-        default:
-            return nil
-        }
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        guard let jobSearchQuery = self.jobSearchQuery else {
-            return tableView.dequeueReusableCellWithIdentifier("basicCell", forIndexPath: indexPath)
-        }
-        
-        switch indexPath.section {
-        case 0:
+    func searchTextTableSection() -> JobSearchQueryTableSection {
+        let section = JobSearchQueryTableSection()
+        section.title = "Fritext"
+        section.indentWhileEditing = false
+        section.cellCount = { return 1}
+        section.cellForRow = { (row: Int) -> (UITableViewCell) in
             if let cell = self.tableView.dequeueReusableCellWithIdentifier("textCell") as? TextFieldTableViewCell {
                 cell.delegate = self
-                cell.textField.text = jobSearchQuery.text
+                cell.textField.text = self.jobSearchQuery?.text
                 return cell
             }
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("basicCell", forIndexPath: indexPath)
-            if indexPath.row < jobSearchQuery.counties.count {
-                let county = jobSearchQuery.counties[indexPath.row]
-                cell.textLabel?.text = county.name
-            } else {
-                cell.textLabel?.text = "Lägg till ..."
+            return UITableViewCell()
+        }
+        section.editingStyleForRow = { (row: Int) -> (UITableViewCellEditingStyle) in
+            return .None
+        }
+        return section
+    }
+    
+    func countyTableSection() -> JobSearchQueryTableSection {
+        let section = JobSearchQueryTableSection()
+        section.title = "Län"
+        section.cellCount = { return (self.jobSearchQuery?.counties.count ?? 0) + 1 }
+        section.cellForRow = { (row: Int) -> (UITableViewCell) in
+            if let cell = self.tableView.dequeueReusableCellWithIdentifier("basicCell"), let jobSearchQuery = self.jobSearchQuery {
+                if row < jobSearchQuery.counties.count {
+                    let county = jobSearchQuery.counties[row]
+                    cell.textLabel?.text = county.name
+                } else {
+                    cell.textLabel?.text = "Lägg till ..."
+                }
+                return cell
             }
-            return cell
-        default:
-            break
+            return UITableViewCell()
         }
-        return UITableViewCell()
-        
-    }
-    
-    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        if indexPath.section == 1 {
-            return true
-        }
-        
-        return false
-    }
-    
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        
-        guard let jobSearchQuery = self.jobSearchQuery else {
-            return .None
-        }
-        
-        switch indexPath.section {
-        case 0:
-            return .None
-        case 1:
-            if indexPath.row < jobSearchQuery.counties.count {
+        section.editingStyleForRow = { (row: Int) -> (UITableViewCellEditingStyle) in
+            if row < (self.jobSearchQuery?.counties.count ?? 0) {
                 return .Delete
             } else {
                 return .Insert
             }
-        default:
-            return .None
         }
+        section.commitEditingStyle = { (indexPath: NSIndexPath, editingStyle: UITableViewCellEditingStyle) in
+            if editingStyle == .Delete {
+                self.jobSearchQuery?.counties.removeAtIndex(indexPath.row)
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            } else {
+                self.performSegueWithIdentifier("showSelectItems", sender: "County")
+            }
+        }
+        return section
+    }
+    
+}
+
+extension JobSearchQueryViewController {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.tableSections.count
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableSections[section].cellCount?() ?? 0
+        
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.tableSections[section].title
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        return self.tableSections[indexPath.section].cellForRow?(row: indexPath.row) ?? UITableViewCell()
+    
+    }
+    
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return self.tableSections[indexPath.section].indentWhileEditing
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        
+        return self.tableSections[indexPath.section].editingStyleForRow?(row: indexPath.row) ?? .None
         
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-            switch indexPath.section {
-            case 0:
-                break
-            case 1:
-                if editingStyle == .Delete {
-                    self.jobSearchQuery?.counties.removeAtIndex(indexPath.row)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                } else {
-                    self.performSegueWithIdentifier("showSelectItems", sender: "County")
-                }
-                break
-            default:
-                break
-            }
+        self.tableSections[indexPath.section].commitEditingStyle?(indexPath: indexPath, editingStyle: editingStyle)
         
     }
 }
