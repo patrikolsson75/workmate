@@ -94,6 +94,7 @@ extension JobSearchQueryViewController : SelectItemsViewControllerDelegate {
     func selectItemsViewController(controller: SelectItemsViewController, didSelect item: County) {
         self.jobSearchQuery?.counties.append(item)
         self.tableView.reloadData()
+        self.searchController?.searchBar.text = nil
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
