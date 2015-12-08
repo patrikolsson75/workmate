@@ -17,24 +17,34 @@ class JobSearchQueryViewController: UITableViewController {
 
     weak var delegate : JobSearchQueryViewControllerDelegate?
     var jobSearchQuery : JobSearchQuery?
-    var searchController : UISearchController?
-    var searchResultController = SelectItemsViewController()
     let geographicManager = GeographicManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchResultController.delegate = self
-        self.searchController = UISearchController(searchResultsController: searchResultController)
-        self.searchController?.searchResultsUpdater = self
-        self.tableView.tableHeaderView = self.searchController?.searchBar
-        self.definesPresentationContext = true
         self.tableView.editing = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showSelectItems" && sender as? String == "County" {
+            if let vc = segue.destinationViewController as? SelectItemsViewController {
+                vc.items = self.geographicManager.allCounties()
+            }
+        }
+        
+    }
+    
+    @IBAction func unwindToJobSearchQueryViewController(segue: UIStoryboardSegue) {
+        if let vc = segue.sourceViewController as? SelectItemsViewController, let selectedItem = vc.selectedItem {
+            self.jobSearchQuery?.counties.append(selectedItem)
+            self.tableView.reloadData()
+        }
+        
     }
 
     @IBAction func save(sender: AnyObject) {
@@ -47,54 +57,117 @@ class JobSearchQueryViewController: UITableViewController {
         self.delegate?.jobSearchQueryViewControllerDidCancel(self)
     }
     
+}
+
+extension JobSearchQueryViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.jobSearchQuery?.counties.count ?? 0
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return (self.jobSearchQuery?.counties.count ?? 0) + 1
+        default:
+            return 0
+        }
+        
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Geografisk"
+        switch section {
+        case 0:
+            return "Fritext"
+        case 1:
+            return "Län"
+        default:
+            return nil
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let county = self.jobSearchQuery?.counties[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("basicCell", forIndexPath: indexPath)
-        cell.textLabel?.text = county?.name
-        return cell
+        guard let jobSearchQuery = self.jobSearchQuery else {
+            return tableView.dequeueReusableCellWithIdentifier("basicCell", forIndexPath: indexPath)
+        }
+        
+        switch indexPath.section {
+        case 0:
+            if let cell = self.tableView.dequeueReusableCellWithIdentifier("textCell") as? TextFieldTableViewCell {
+                cell.delegate = self
+                cell.textField.text = jobSearchQuery.text
+                return cell
+            }
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("basicCell", forIndexPath: indexPath)
+            if indexPath.row < jobSearchQuery.counties.count {
+                let county = jobSearchQuery.counties[indexPath.row]
+                cell.textLabel?.text = county.name
+            } else {
+                cell.textLabel?.text = "Lägg till ..."
+            }
+            return cell
+        default:
+            break
+        }
+        return UITableViewCell()
+        
+    }
+    
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        if indexPath.section == 1 {
+            return true
+        }
+        
+        return false
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
+        
+        guard let jobSearchQuery = self.jobSearchQuery else {
+            return .None
+        }
+        
+        switch indexPath.section {
+        case 0:
+            return .None
+        case 1:
+            if indexPath.row < jobSearchQuery.counties.count {
+                return .Delete
+            } else {
+                return .Insert
+            }
+        default:
+            return .None
+        }
+        
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if editingStyle == .Delete {
-            self.jobSearchQuery?.counties.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        }
+            switch indexPath.section {
+            case 0:
+                break
+            case 1:
+                if editingStyle == .Delete {
+                    self.jobSearchQuery?.counties.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                } else {
+                    self.performSegueWithIdentifier("showSelectItems", sender: "County")
+                }
+                break
+            default:
+                break
+            }
         
     }
 }
 
-extension JobSearchQueryViewController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text where searchText != "" {
-            self.searchResultController.counties = geographicManager.searchCounty(withName: searchText)
-            self.searchResultController.tableView.reloadData()
-        }
-    }
-}
-
-extension JobSearchQueryViewController : SelectItemsViewControllerDelegate {
-    func selectItemsViewController(controller: SelectItemsViewController, didSelect item: County) {
-        self.jobSearchQuery?.counties.append(item)
-        self.tableView.reloadData()
-        self.searchController?.searchBar.text = nil
-        self.dismissViewControllerAnimated(true, completion: nil)
+extension JobSearchQueryViewController : TextFieldTableViewCellDelegate {
+    func textFieldTableViewCell(cell: TextFieldTableViewCell, willChange text: String) {
+        self.jobSearchQuery?.text = text
     }
 }

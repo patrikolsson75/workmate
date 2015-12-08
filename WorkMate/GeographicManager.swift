@@ -43,4 +43,22 @@ class GeographicManager {
         return []
     }
     
+    func allCounties() -> Array<County> {
+        if let filePath = NSBundle.mainBundle().pathForResource("geoareas", ofType: "plist") {
+            let dictionary = NSDictionary(contentsOfFile: filePath)
+            if let allCounties = dictionary?.objectForKey("lans") as? Array<NSDictionary> {
+                return allCounties.map({ (countyDic) -> County in
+                    if let namn = countyDic.objectForKey("namn") as? String, let id = countyDic.objectForKey("id") as? Int {
+                        return County(name: namn, id: id)
+                    }
+                    return County(name: "", id: 0)
+                })
+            }
+            
+            
+        }
+        
+        return []
+    }
+    
 }

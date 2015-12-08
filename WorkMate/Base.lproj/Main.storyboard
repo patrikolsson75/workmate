@@ -231,6 +231,33 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="textCell" id="bgG-My-rRB" customClass="TextFieldTableViewCell" customModule="Lediga_arbeten" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgG-My-rRB" id="0MC-NW-LYl">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Dy-zF-IFI">
+                                            <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="1Dy-zF-IFI" firstAttribute="top" secondItem="0MC-NW-LYl" secondAttribute="topMargin" id="1pt-ii-k6k"/>
+                                        <constraint firstItem="1Dy-zF-IFI" firstAttribute="trailing" secondItem="0MC-NW-LYl" secondAttribute="trailingMargin" id="HRB-0L-CnE"/>
+                                        <constraint firstItem="1Dy-zF-IFI" firstAttribute="leading" secondItem="0MC-NW-LYl" secondAttribute="leadingMargin" id="MS4-gt-sna"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1Dy-zF-IFI" secondAttribute="bottom" id="h7c-ip-epE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="textField" destination="1Dy-zF-IFI" id="6B4-xr-WAp"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -245,10 +272,58 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="0iG-d2-DWB" kind="show" identifier="showSelectItems" id="L8n-aH-HCi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfC-BR-Mr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1951" y="1776"/>
+        </scene>
+        <!--Select Items View Controller-->
+        <scene sceneID="hQh-pS-tjw">
+            <objects>
+                <tableViewController id="0iG-d2-DWB" customClass="SelectItemsViewController" customModule="Lediga_arbeten" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dzo-Oy-YCU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="basicCellIdentifier" textLabel="jj9-Hb-TcW" style="IBUITableViewCellStyleDefault" id="IFp-Rs-4IJ">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IFp-Rs-4IJ" id="wY6-kb-FBg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jj9-Hb-TcW">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <segue destination="80X-1V-PSz" kind="unwind" unwindAction="unwindToJobSearchQueryViewController:" id="Dwk-LC-b7W"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0iG-d2-DWB" id="nc0-Dt-rPO"/>
+                            <outlet property="delegate" destination="0iG-d2-DWB" id="p97-W9-bEJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFd-xD-O4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="80X-1V-PSz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2690" y="1776"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q8j-rz-5Ds">

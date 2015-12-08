@@ -10,6 +10,7 @@
 		2DFE3B4D2C43AC086AC330E9 /* Pods_WorkMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */; };
 		5F074D421C08ED1700B860D4 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */; };
 		5F074D441C08F20000B860D4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F074D431C08F20000B860D4 /* MessageUI.framework */; };
+		5F92B8021C170080003E0D09 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */; };
 		5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */; };
 		5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */; };
 		5F9ECF8A1C0F9C1D00059A6B /* geoareas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9ECF891C0F9C1D00059A6B /* geoareas.plist */; };
@@ -61,6 +62,7 @@
 		35F4599D5171B5A6D578005D /* Pods-WorkMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.debug.xcconfig"; sourceTree = "<group>"; };
 		5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		5F074D431C08F20000B860D4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5F9ECF891C0F9C1D00059A6B /* geoareas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = geoareas.plist; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */,
 				5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */,
 				5F9ECF8F1C0FABF800059A6B /* SelectItemsViewController.swift */,
+				5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */,
 			);
 			path = WorkMate;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				5FA995F51C00861600BBDAD3 /* JobListViewController.swift in Sources */,
 				5F9ECF8C1C0F9D7E00059A6B /* GeographicManager.swift in Sources */,
 				5FAA9E211C0196380000C57B /* JobSearchQuery.swift in Sources */,
+				5F92B8021C170080003E0D09 /* TextFieldTableViewCell.swift in Sources */,
 				5FAA9E2D1C01CC5A0000C57B /* Platsannons.swift in Sources */,
 				5FA995C71C0085C700BBDAD3 /* AppDelegate.swift in Sources */,
 				5F074D421C08ED1700B860D4 /* ButtonTableViewCell.swift in Sources */,
