@@ -52,4 +52,12 @@ class JobSearchQueryTests: XCTestCase {
         
         XCTAssertEqual(searchQuery.queryString(), "q=s(go(1))")
     }
+    
+    func testThatItAddsMunicipality() {
+        let searchQuery = JobSearchQuery()
+        
+        searchQuery.municipalities.append(Municipality(dictionary: ["name": "Solna", "id": 4]))
+        
+        XCTAssertEqual(searchQuery.queryString(), "q=s(se(4))")
+    }
 }

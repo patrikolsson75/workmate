@@ -12,6 +12,7 @@ class JobSearchQuery {
     
     var text : String?
     var counties : Array<County> = []
+    var municipalities : Array<Municipality> = []
     
     func queryString() -> String {
         
@@ -27,6 +28,12 @@ class JobSearchQuery {
             let countiesIds = self.counties.map({ String($0.id) })
             let countiesString = countiesIds.joinWithSeparator(",")
             parameters += "go(\(countiesString))"
+        }
+        
+        if self.municipalities.count > 0 {
+            let ids = self.municipalities.map({ String($0.id) })
+            let idsString = ids.joinWithSeparator(",")
+            parameters += "se(\(idsString))"
         }
         
         return "q=s(\(parameters))"
