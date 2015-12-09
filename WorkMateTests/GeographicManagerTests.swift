@@ -43,4 +43,14 @@ class GeographicManagerTests: XCTestCase {
         XCTAssertEqual(county.id, 10)
         XCTAssertEqual(county.name, "Blekinge län")
     }
+    
+    func testThatItReturnsAllMunicipality() {
+        let manager = GeographicManager()
+        let list = manager.allMunicipalities()
+        let item = list[0]
+        
+        XCTAssertEqual(item.id, 764)
+        XCTAssertEqual(item.lanid, 7)
+        XCTAssertEqual(item.name, "Alvesta")
+    }
 }

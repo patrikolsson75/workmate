@@ -48,7 +48,7 @@ class JobSearchQueryTests: XCTestCase {
     func testThatItAddsCounties() {
         let searchQuery = JobSearchQuery()
         
-        searchQuery.counties.append(County(name: "Stockholm", id: 1))
+        searchQuery.counties.append(County(dictionary: ["name": "Stockholm", "id": 1]))
         
         XCTAssertEqual(searchQuery.queryString(), "q=s(go(1))")
     }

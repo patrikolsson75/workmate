@@ -11,6 +11,23 @@ import Foundation
 struct County {
     let name : String
     let id : Int
+    
+    init(dictionary: NSDictionary) {
+        name = dictionary.objectForKey("namn") as? String ?? ""
+        id = dictionary.objectForKey("id") as? Int ?? 0
+    }
+}
+
+struct Municipality {
+    let name : String
+    let id : Int
+    let lanid : Int
+    
+    init(dictionary: NSDictionary) {
+        name = dictionary.objectForKey("namn") as? String ?? ""
+        id = dictionary.objectForKey("id") as? Int ?? 0
+        lanid = dictionary.objectForKey("lanid") as? Int ?? 0
+    }
 }
 
 class GeographicManager {
@@ -30,16 +47,10 @@ class GeographicManager {
                     return false
                 })
                 return filteredCounties.map({ (countyDic) -> County in
-                    if let namn = countyDic.objectForKey("namn") as? String, let id = countyDic.objectForKey("id") as? Int {
-                        return County(name: namn, id: id)
-                    }
-                    return County(name: "", id: 0)
+                    return County(dictionary: countyDic)
                 })
             }
-            
-            
         }
-        
         return []
     }
     
@@ -48,16 +59,22 @@ class GeographicManager {
             let dictionary = NSDictionary(contentsOfFile: filePath)
             if let allCounties = dictionary?.objectForKey("lans") as? Array<NSDictionary> {
                 return allCounties.map({ (countyDic) -> County in
-                    if let namn = countyDic.objectForKey("namn") as? String, let id = countyDic.objectForKey("id") as? Int {
-                        return County(name: namn, id: id)
-                    }
-                    return County(name: "", id: 0)
+                    return County(dictionary: countyDic)
                 })
             }
-            
-            
         }
-        
+        return []
+    }
+    
+    func allMunicipalities() -> Array<Municipality> {
+        if let filePath = NSBundle.mainBundle().pathForResource("geoareas", ofType: "plist") {
+            let dictionary = NSDictionary(contentsOfFile: filePath)
+            if let allMunicipalities = dictionary?.objectForKey("kommuner") as? Array<NSDictionary> {
+                return allMunicipalities.map({ (itemDictionary) -> Municipality in
+                    return Municipality(dictionary: itemDictionary)
+                })
+            }
+        }
         return []
     }
     
