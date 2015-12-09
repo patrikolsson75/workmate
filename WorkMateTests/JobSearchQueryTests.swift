@@ -58,6 +58,6 @@ class JobSearchQueryTests: XCTestCase {
         
         searchQuery.municipalities.append(Municipality(dictionary: ["name": "Solna", "id": 4]))
         
-        XCTAssertEqual(searchQuery.queryString(), "q=s(se(4))")
+        XCTAssertEqual(searchQuery.queryString(), "q=s(ao(4))")
     }
 }

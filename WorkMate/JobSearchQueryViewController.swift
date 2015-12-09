@@ -36,6 +36,7 @@ class JobSearchQueryViewController: UITableViewController {
         
         self.tableSections.append(self.searchTextTableSection())
         self.tableSections.append(self.countyTableSection())
+        self.tableSections.append(self.municipalityTableSection())
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,11 +52,21 @@ class JobSearchQueryViewController: UITableViewController {
             }
         }
         
+        if segue.identifier == "showSelectMunicipalities" && sender as? String == "Municipality" {
+            if let vc = segue.destinationViewController as? SelectMunicipalityViewController {
+                vc.items = self.geographicManager.allMunicipalities()
+            }
+        }
+        
     }
     
     @IBAction func unwindToJobSearchQueryViewController(segue: UIStoryboardSegue) {
         if let vc = segue.sourceViewController as? SelectItemsViewController, let selectedItem = vc.selectedItem {
             self.jobSearchQuery?.counties.append(selectedItem)
+            self.tableView.reloadData()
+        }
+        if let vc = segue.sourceViewController as? SelectMunicipalityViewController, let selectedItem = vc.selectedItem {
+            self.jobSearchQuery?.municipalities.append(selectedItem)
             self.tableView.reloadData()
         }
         
@@ -119,6 +130,40 @@ class JobSearchQueryViewController: UITableViewController {
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             } else {
                 self.performSegueWithIdentifier("showSelectItems", sender: "County")
+            }
+        }
+        return section
+    }
+    
+    func municipalityTableSection() -> JobSearchQueryTableSection {
+        let section = JobSearchQueryTableSection()
+        section.title = "Kommun"
+        section.cellCount = { return (self.jobSearchQuery?.municipalities.count ?? 0) + 1 }
+        section.cellForRow = { (row: Int) -> (UITableViewCell) in
+            if let cell = self.tableView.dequeueReusableCellWithIdentifier("basicCell"), let jobSearchQuery = self.jobSearchQuery {
+                if row < jobSearchQuery.municipalities.count {
+                    let item = jobSearchQuery.municipalities[row]
+                    cell.textLabel?.text = item.name
+                } else {
+                    cell.textLabel?.text = "Lägg till ..."
+                }
+                return cell
+            }
+            return UITableViewCell()
+        }
+        section.editingStyleForRow = { (row: Int) -> (UITableViewCellEditingStyle) in
+            if row < (self.jobSearchQuery?.municipalities.count ?? 0) {
+                return .Delete
+            } else {
+                return .Insert
+            }
+        }
+        section.commitEditingStyle = { (indexPath: NSIndexPath, editingStyle: UITableViewCellEditingStyle) in
+            if editingStyle == .Delete {
+                self.jobSearchQuery?.municipalities.removeAtIndex(indexPath.row)
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            } else {
+                self.performSegueWithIdentifier("showSelectMunicipalities", sender: "Municipality")
             }
         }
         return section

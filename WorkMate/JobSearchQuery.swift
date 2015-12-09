@@ -33,7 +33,7 @@ class JobSearchQuery {
         if self.municipalities.count > 0 {
             let ids = self.municipalities.map({ String($0.id) })
             let idsString = ids.joinWithSeparator(",")
-            parameters += "se(\(idsString))"
+            parameters += "ao(\(idsString))"
         }
         
         return "q=s(\(parameters))"

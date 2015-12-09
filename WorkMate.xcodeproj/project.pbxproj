@@ -10,6 +10,7 @@
 		2DFE3B4D2C43AC086AC330E9 /* Pods_WorkMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF0E156DA31D86EB6E24A27 /* Pods_WorkMate.framework */; };
 		5F074D421C08ED1700B860D4 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */; };
 		5F074D441C08F20000B860D4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F074D431C08F20000B860D4 /* MessageUI.framework */; };
+		5F43A8D51C18264E00370D11 /* SelectMunicipalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43A8D41C18264E00370D11 /* SelectMunicipalityViewController.swift */; };
 		5F92B8021C170080003E0D09 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */; };
 		5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */; };
 		5F987EAD1C02727D00E8C70D /* AdHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */; };
@@ -62,6 +63,7 @@
 		35F4599D5171B5A6D578005D /* Pods-WorkMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WorkMate/Pods-WorkMate.debug.xcconfig"; sourceTree = "<group>"; };
 		5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		5F074D431C08F20000B860D4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5F43A8D41C18264E00370D11 /* SelectMunicipalityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMunicipalityViewController.swift; sourceTree = "<group>"; };
 		5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		5F987EAA1C026E8D00E8C70D /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		5F987EAC1C02727D00E8C70D /* AdHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				5F074D411C08ED1700B860D4 /* ButtonTableViewCell.swift */,
 				5F9ECF8F1C0FABF800059A6B /* SelectItemsViewController.swift */,
 				5F92B8011C170080003E0D09 /* TextFieldTableViewCell.swift */,
+				5F43A8D41C18264E00370D11 /* SelectMunicipalityViewController.swift */,
 			);
 			path = WorkMate;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				5F074D421C08ED1700B860D4 /* ButtonTableViewCell.swift in Sources */,
 				5F987EAB1C026E8D00E8C70D /* LabelTableViewCell.swift in Sources */,
 				5FAA9E271C01C3E90000C57B /* JobAdViewController.swift in Sources */,
+				5F43A8D51C18264E00370D11 /* SelectMunicipalityViewController.swift in Sources */,
 				5F9ECF901C0FABF800059A6B /* SelectItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
