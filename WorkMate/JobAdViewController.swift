@@ -69,7 +69,7 @@ class JobAdViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 44.0
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: Selector("performFetch"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(JobAdViewController.performFetch), forControlEvents: UIControlEvents.ValueChanged)
         
         self.performFetch()
         
@@ -202,13 +202,13 @@ class JobAdViewController: UITableViewController {
         if let epostadress = self.platsannons?.ansokan?.epostadress where epostadress != "" {
             let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
             buttonCell.button.setTitle("Ansök genom epost", forState: .Normal)
-            buttonCell.button.addTarget(self, action: Selector("applyWithEmail"), forControlEvents: .TouchUpInside)
+            buttonCell.button.addTarget(self, action: #selector(JobAdViewController.applyWithEmail), forControlEvents: .TouchUpInside)
             tableSection.cells.append(buttonCell)
         }
         if let webbplats = self.platsannons?.ansokan?.webbplats where webbplats != "" {
             let buttonCell = tableView.dequeueReusableCellWithIdentifier("adButtonCell") as! ButtonTableViewCell
             buttonCell.button.setTitle("Ansök genom webbsida", forState: .Normal)
-            buttonCell.button.addTarget(self, action: Selector("applyOnWebPage"), forControlEvents: .TouchUpInside)
+            buttonCell.button.addTarget(self, action: #selector(JobAdViewController.applyOnWebPage), forControlEvents: .TouchUpInside)
             tableSection.cells.append(buttonCell)
         }
         
