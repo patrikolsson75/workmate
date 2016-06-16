@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct County {
+class County : JobSearchQueryListItem {
     let name : String
     let id : Int
     
@@ -18,7 +18,7 @@ struct County {
     }
 }
 
-struct Municipality {
+class Municipality : JobSearchQueryListItem {
     let name : String
     let id : Int
     let lanid : Int
@@ -54,11 +54,11 @@ class GeographicManager {
         return []
     }
     
-    func allCounties() -> Array<County> {
+    func allCounties() -> Array<JobSearchQueryListItem> {
         if let filePath = NSBundle.mainBundle().pathForResource("geoareas", ofType: "plist") {
             let dictionary = NSDictionary(contentsOfFile: filePath)
             if let allCounties = dictionary?.objectForKey("lans") as? Array<NSDictionary> {
-                return allCounties.map({ (countyDic) -> County in
+                return allCounties.map({ (countyDic) -> JobSearchQueryListItem in
                     return County(dictionary: countyDic)
                 })
             }

@@ -28,7 +28,7 @@ class JobListViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: Selector("refreshJobSearch"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(JobListViewController.refreshJobSearch), forControlEvents: UIControlEvents.ValueChanged)
         
         self.performJobSearch(JobSearchQuery())
     }

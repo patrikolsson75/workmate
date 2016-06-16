@@ -10,8 +10,8 @@ import UIKit
 
 class SelectItemsViewController: UITableViewController {
 
-    var items : Array<County>?
-    var selectedItem : County?
+    var items : Array<JobSearchQueryListItem>?
+    var selectedItem : JobSearchQueryListItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,11 +8,16 @@
 
 import Foundation
 
+protocol JobSearchQueryListItem : class {
+    var name : String { get }
+    var id : Int { get }
+}
+
 class JobSearchQuery {
     
     var text : String?
-    var counties : Array<County> = []
-    var municipalities : Array<Municipality> = []
+    var counties : Array<JobSearchQueryListItem> = []
+    var municipalities : Array<JobSearchQueryListItem> = []
     
     func queryString() -> String {
         
