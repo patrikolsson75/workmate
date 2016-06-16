@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 struct Job {
     let annonsrubrik : String
@@ -26,6 +27,8 @@ class JobListViewController: UITableViewController {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = false
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(JobListViewController.refreshJobSearch), forControlEvents: UIControlEvents.ValueChanged)
@@ -104,16 +107,18 @@ class JobListViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("simpleCell", forIndexPath: indexPath)
-
-
-        cell.textLabel?.text = self.matchningdata[indexPath.row].annonsrubrik
+        let cell = tableView.dequeueReusableCellWithIdentifier("JobListAdTableViewCell", forIndexPath: indexPath) as! JobListAdTableViewCell
+        let matchningsdata = self.matchningdata[indexPath.row]
+        cell.titleLabel?.text = matchningsdata.annonsrubrik
+        cell.subtitleLabel?.text = matchningsdata.arbetsplatsnamn
         
-
-            if (indexPath.row == (self.matchningdata.count - 1)) {
-                self.fetchNextPage()
-            }
+        let logoURL = NSURL(string: "http://api.arbetsformedlingen.se/platsannons/\(matchningsdata.annonsid)/logotyp")!
+        let filter = AspectScaledToFitSizeFilter(size: cell.logoImageView.frame.size)
+        cell.logoImageView.af_setImageWithURL(logoURL, filter: filter)
         
+        if (indexPath.row == (self.matchningdata.count - 1)) {
+            self.fetchNextPage()
+        }
         
         return cell
     }
