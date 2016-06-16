@@ -42,6 +42,7 @@ class JobListViewController: UITableViewController {
         self.refreshControl?.beginRefreshing()
         Alamofire.request(.GET, "http://api.arbetsformedlingen.se/platsannons/sok?antalrader=\(numberOfAdsPerPage)&sida=1&\(jobSearchQuery.queryString())")
             .responseData { response in
+                print(response.request)
                 self.refreshControl?.endRefreshing()
                 if let responseData = response.result.value {
                     if let matchlist = try? Matchningslista(jsonData: responseData) {
